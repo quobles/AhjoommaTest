@@ -148,8 +148,8 @@ body {
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   max-width: 1200px;
-  margin: 40px auto;
   padding: 35px;
+  margin: 40px auto;
 }
 
 .category {
@@ -191,3 +191,4 @@ body {
 /* END OF ITEM CATEGORIES AT HOME PAGE */
 
 /* START OF FEATURED AT HOME PAGE */
+
