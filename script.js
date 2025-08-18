@@ -1,4 +1,3 @@
-// === Generic carousel function ===
 function initCarousel(carouselElement, auto = true) {
   let track = carouselElement.querySelector('.carousel-track');
   let slides = track ? Array.from(track.children) : [];
@@ -50,7 +49,6 @@ function initCarousel(carouselElement, auto = true) {
   startAutoScroll();
 }
 
-// === Product slideshow function ===
 function initProductSlideshow() {
   let productCards = document.querySelectorAll('.product-card');
   let productDots = document.querySelectorAll('.product-dots .dot');
@@ -76,9 +74,8 @@ function initProductSlideshow() {
   updateProductSlideshow();
 }
 
-// === Init everything ===
 document.addEventListener('DOMContentLoaded', () => {
   initCarousel(document.querySelector('.main-carousel'), true);     // main hero
-  initCarousel(document.querySelector('.featured-carousel'), false); // featured
+  initCarousel(document.querySelector('.featured-carousel'), true); // featured
   initProductSlideshow();                                           // product cards
 });
