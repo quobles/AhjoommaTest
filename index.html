@@ -9,35 +9,33 @@
 <body>
 
 <!-- START OF NAVBAR -->
-  <div class="navbar">
-    <div class="left">
-      <a href="#">Bulletin</a>
-      <a href="#">Try this</a>
-      <a href="#">About Us</a>
-    </div>
-
-    <a href="index.html">
-      <img src="images/logo.png" class="logo">
-    </a>
-
-    <div class="right">
-      <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-        <input type="text" placeholder="Looking for something?" class="search-input">
-      </div>
-      <a href="#">Cart</a>
-      <a href="#">Profile</a>
-      <a href="#">Notifications</a>
-      <a href="#">⋯</a>
-    </div>
+<div class="navbar">
+  <div class="left">
+    <a href="#">Bulletin</a>
+    <a href="#">Try this</a>
+    <a href="#">About Us</a>
   </div>
+
+  <a href="index.html">
+    <img src="images/logo.png" class="logo">
+  </a>
+
+  <div class="right">
+    <div class="search-container">
+      <button type="submit" class="search-button">🔍</button>
+      <input type="text" placeholder="Looking for something?" class="search-input">
+    </div>
+    <a href="#">🛒</a>
+    <a href="#">👤</a>
+    <a href="#">🔔</a>
+    <a href="#">⋯</a>
+  </div>
+</div>
 <!-- END OF NAVBAR -->
 
-<!-- START OF BODY -->
-
-<!-- START OF CAROUSEL / SLIDESHOW -->
-<div class="carousel">
-  <button class="carousel-btn prev">&#8592;</button>
+<!-- START OF MAIN CAROUSEL -->
+<div class="carousel main-carousel">
+  <button class="carousel-btn prev">‹</button>
 
   <div class="carousel-track">
     <img src="images/slide1.jpg">
@@ -45,7 +43,7 @@
     <img src="images/slide3.jpg">
   </div>
 
-  <button class="carousel-btn next">&#8594;</button>
+  <button class="carousel-btn next">›</button>
 
   <div class="carousel-dots">
     <span class="dot active"></span>
@@ -53,55 +51,91 @@
     <span class="dot"></span>
   </div>
 </div>
-<!-- END OF CAROUSEL / SLIDESHOW -->
+<!-- END OF MAIN CAROUSEL -->
 
 <!-- START OF ITEM CATEGORIES -->
 <div class="categories">
-    <a href="#" class="category">
-      <img src="images/noodles.png" alt="Noodles">
-      <p>Noodles</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/canned.jpg" alt="Canned">
-      <p>Canned</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/beverages.jpg" alt="Beverages">
-      <p>Beverages</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/snacks.png" alt="Snacks">
-      <p>Snacks</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/nori.png" alt="DIY Ramen">
-      <p>Nori</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/icecream.jpg" alt="Ice Cream">
-      <p>Ice Cream</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/equipments.jpg" alt="Equipments">
-      <p>Equipments</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/frozen.jpg" alt="Frozen">
-      <p>Frozen</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/home.jpg" alt="Home Essentials">
-      <p>Home Essentials</p>
-    </a>
-    <a href="#" class="category">
-      <img src="images/others.png" alt="Others">
-      <p>Others</p>
-    </a>
+  <a href="#" class="category"><img src="images/noodles.png"><p>Noodles</p></a>
+  <a href="#" class="category"><img src="images/canned.jpg"><p>Canned</p></a>
+  <a href="#" class="category"><img src="images/beverages.jpg"><p>Beverages</p></a>
+  <a href="#" class="category"><img src="images/snacks.png"><p>Snacks</p></a>
+  <a href="#" class="category"><img src="images/nori.png"><p>Nori</p></a>
+  <a href="#" class="category"><img src="images/icecream.jpg"><p>Ice Cream</p></a>
+  <a href="#" class="category"><img src="images/equipments.jpg"><p>Equipments</p></a>
+  <a href="#" class="category"><img src="images/frozen.jpg"><p>Frozen</p></a>
+  <a href="#" class="category"><img src="images/home.jpg"><p>Home Essentials</p></a>
+  <a href="#" class="category"><img src="images/others.png"><p>Others</p></a>
 </div>
 <!-- END OF ITEM CATEGORIES -->
 
-<!-- START OF PRODUCTS PROMOTION -->
-<!-- START OF FEATURED CAROUSEL / SLIDESHOW -->
+<!-- START OF FEATURED + PRODUCT SLIDESHOW -->
+<div class="featured-section">
+
+  <!-- Featured Carousel -->
+  <div class="carousel featured-carousel">
+    <h2 class="carousel-title">AHJOOMMAS CHOICE</h2>
+    <div class="carousel-track-container">
+      <ul class="carousel-track">
+        <li class="carousel-slide">
+          <img src="images/featured1.png">
+          <p class="desc">Description of the featured photo here</p>
+        </li>
+        <li class="carousel-slide">
+          <img src="images/featured2.png">
+          <p class="desc">Another featured photo description</p>
+        </li>
+        <li class="carousel-slide">
+          <img src="images/featured3.jpg">
+          <p class="desc">Clickable featured image</p>
+        </li>
+      </ul>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn prev">‹</button>
+      <button class="carousel-btn next">›</button>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+  <!-- Product Slideshow -->
+  <div class="product-slideshow">
+    <h2 class="carousel-title">BEST SELLER OF THE MONTH</h2>
+    <div class="product-cards">
+      <div class="product-card active">
+        <img src="images/product1.png">
+        <h3>Product Name 1</h3>
+        <p>₱100</p>
+        <p>120 Sales</p>
+        <a>Add to Cart</a>
+      </div>
+      <div class="product-card">
+        <img src="images/product2.jpg">
+        <h3>Product Name 2</h3>
+        <p>₱200</p>
+        <p>90 Sales</p>
+        <a>Add to Cart</a>
+      </div>
+      <div class="product-card">
+        <img src="images/product3.png">
+        <h3>Product Name 3</h3>
+        <p>₱150</p>
+        <p>75 Sales</p>
+        <a>Add to Cart</a>
+      </div>
+    </div>
+    <div class="carousel-dots product-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+</div>
+<!-- END OF FEATURED + PRODUCT SLIDESHOW -->
 
 </body>
 </html>
