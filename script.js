@@ -1,353 +1,115 @@
-body {
-  font-family: sans-serif;
-  margin: 0;
-}
+function initCarousel(carouselElement, auto = true) {
+  let track = carouselElement.querySelector('.carousel-track');
+  let slides = track ? Array.from(track.children) : [];
+  let prevButton = carouselElement.querySelector('.carousel-btn.prev');
+  let nextButton = carouselElement.querySelector('.carousel-btn.next');
+  let dots = carouselElement.querySelectorAll('.dot');
 
-/* ========================
-   NAVBAR
-======================== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  border-bottom: 3px solid #000;
-}
+  let currentIndex = 0;
+  let autoScrollInterval;
 
-.navbar .left,
-.navbar .right {
-  display: flex;
-  align-items: center;
-}
-
-.left a:hover,
-.right a:hover {
-  background: white;
-}
-
-.navbar .left a {
-  background: hotpink;
-  color: white;
-}
-
-.navbar .left a,
-.search-container,
-.navbar .right a {
-  margin: 5px;
-  margin-top: 50px;
-  padding: 8px 15px;
-  text-decoration: none;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.navbar .right a {
-  background: #5ce1e6;
-  color: black;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  background-color: #e0f7f9;
-  padding: 5px 10px;
-  border-radius: 20px;
-}
-
-.search-input {
-  border: none;
-  outline: none;
-  background: transparent;
-  padding: 5px;
-  font-size: 14px;
-  width: 150px;
-}
-
-.search-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.logo {
-  height: 90px;
-  margin-left: 40px;
-}
-
-/* ========================
-   HOME CAROUSEL
-======================== */
-.carousel {
-  position: relative;
-  overflow: hidden;
-  width: 90%;
-  margin: 20px auto;
-  background: #b8f2f2;
-  border-radius: 20px;
-  border: 20px double #b8f2f2;
-}
-
-.carousel-track {
-  display: flex;
-  transition: 0.5s ease-in-out;
-}
-
-.carousel-track img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 20px;
-  flex-shrink: 0;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  background: #2f7d7d;
-  color: hotpink;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 50%;
-  z-index: 10;
-}
-
-.carousel-btn.prev {
-  left: 10px;
-}
-
-.carousel-btn.next {
-  right: 10px;
-}
-
-.carousel-dots {
-  text-align: center;
-  padding: 10px;
-}
-
-.dot {
-  height: 10px;
-  width: 10px;
-  background-color: black;
-  border-radius: 50%;
-  display: inline-block;
-  margin: 5px;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.dot.active {
-  opacity: 1;
-}
-
-.main-carousel .carousel-btn {
-  color: white;
-  background: #b8f2f2;
-}
-
-.main-carousel .carousel-btn:hover {
-  color: darkblue;
-}
-
-/* ========================
-   ITEM CATEGORIES
-======================== */
-.categories {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  padding: 35px;
-  margin: 40px auto;
-}
-
-.category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.category img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 15px;
-  border: 5px solid hotpink;
-}
-
-.category p {
-  background-color: hotpink;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  margin: 8px;
-  padding: 5px;
-  width: 100%;
-  border-radius: 8px;
-}
-
-/* ========================
-   FEATURED SECTION
-======================== */
-.featured-section {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin: 20px;
-  flex-wrap: wrap;
-}
-
-/* --- Left Carousel --- */
-.featured-carousel {
-  flex: 1;
-  min-width: 350px;
-  max-width: 600px;
-  background: hotpink;
-  padding: 20px;
-  border-radius: 20px;
-  text-align: center;
-  color: white;
-  border: none;
-}
-
-.carousel-track-container {
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-track {
-  display: flex;
-  transition: 0.5s ease-in-out;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  box-sizing: border-box;
-}
-
-.carousel-slide img {
-  width: 100%;
-  border-radius: 15px;
-}
-
-.carousel-btn {
-  border: none;
-  font-size: 20px;
-  padding: 5px 10px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 50%;
-}
-
-.carousel-dots {
-  margin-top: 10px;
-}
-
-.carousel-dots .dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 5px;
-  border-radius: 50%;
-  background-color: grey;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.carousel-dots .dot.active {
-  background-color: black;
-}
-
-.featured-carousel .carousel-btn {
-  color: white;
-  background: hotpink;
-}
-
-.featured-carousel .carousel-btn:hover {
-  color: deeppink;
-}
-
-/* --- Right Product Slideshow --- */
-.product-slideshow {
-  flex: 1;
-  min-width: 250px;
-  max-width: 400px;
-  margin: 0 auto;
-  background: hotpink;
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.product-cards {
-  position: relative;
-  height: 300px;
-}
-
-.product-card {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  color: black;
-  transform: translateX(-50%) scale(0.8);
-  opacity: 0;
-  transition: all 0.5s ease;
-  background: white;
-  border-radius: 15px;
-  padding: 10px;
-  width: 90%;
-}
-
-.product-card.active {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.product-card a {
-  background: hotpink;
-  color: white;
-  margin: 5px;
-  padding: 8px 15px;
-  text-decoration: none;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.product-dots {
-  margin-top: 300px;
-}
-
-.product-dots .dot {
-  height: 10px;
-  width: 10px;
-  margin: 0 4px;
-  background: black;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  opacity: 0.5;
-}
-
-.product-dots .dot.active {
-  opacity: 1;
-}
-
-/* --- Responsive --- */
-@media (max-width: 768px) {
-  .featured-section {
-    flex-direction: column;
-    align-items: center;
+  function updateCarousel() {
+    if (!track) return;
+    track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
   }
+
+  function goToPrev() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+  function goToNext() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  if (prevButton) prevButton.addEventListener('click', goToPrev);
+  if (nextButton) nextButton.addEventListener('click', goToNext);
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      currentIndex = i;
+      updateCarousel();
+    });
+  });
+
+  track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) { // Minimum swipe distance
+    if (diff > 0) {
+      goToNext(); // Swipe left → next
+    } else {
+      goToPrev(); // Swipe right → prev
+    }
+  }
+});
+
+
+  // Auto scroll
+  function startAutoScroll() {
+    if (auto) {
+      stopAutoScroll();
+      autoScrollInterval = setInterval(goToNext, 4000);
+    }
+  }
+  function stopAutoScroll() { clearInterval(autoScrollInterval); }
+
+  carouselElement.addEventListener('mouseenter', stopAutoScroll);
+  carouselElement.addEventListener('mouseleave', startAutoScroll);
+  carouselElement.addEventListener('touchstart', stopAutoScroll);
+  carouselElement.addEventListener('touchend', startAutoScroll);
+
+  updateCarousel();
+  startAutoScroll();
 }
+
+function initProductSlideshow() {
+  let productCards = document.querySelectorAll('.product-card');
+  let productDots = document.querySelectorAll('.product-dots .dot');
+  let currentProductIndex = 0;
+
+  function updateProductSlideshow() {
+    productCards.forEach((card, i) => card.classList.toggle('active', i === currentProductIndex));
+    productDots.forEach((dot, i) => dot.classList.toggle('active', i === currentProductIndex));
+  }
+
+  productDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      currentProductIndex = i;
+      updateProductSlideshow();
+    });
+  });
+
+track.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) { // Minimum swipe distance
+    if (diff > 0) {
+      goToNext(); // Swipe left → next
+    } else {
+      goToPrev(); // Swipe right → prev
+    }
+  }
+});
+
+
+  setInterval(() => {
+    currentProductIndex = (currentProductIndex + 1) % productCards.length;
+    updateProductSlideshow();
+  }, 4000);
+
+  updateProductSlideshow();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initCarousel(document.querySelector('.main-carousel'), true);     // main hero
+  initCarousel(document.querySelector('.featured-carousel'), true); // featured
+  initProductSlideshow();                                           // product cards
+});
