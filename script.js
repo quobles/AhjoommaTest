@@ -33,6 +33,24 @@ function initCarousel(carouselElement, auto = true) {
     });
   });
 
+  track.addEventListener('touchstart', (e) => {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) { // Minimum swipe distance
+    if (diff > 0) {
+      goToNext(); // Swipe left → next
+    } else {
+      goToPrev(); // Swipe right → prev
+    }
+  }
+});
+
+
   // Auto scroll
   function startAutoScroll() {
     if (auto) {
@@ -44,6 +62,8 @@ function initCarousel(carouselElement, auto = true) {
 
   carouselElement.addEventListener('mouseenter', stopAutoScroll);
   carouselElement.addEventListener('mouseleave', startAutoScroll);
+  carouselElement.addEventListener('touchstart', stopAutoScroll);
+  carouselElement.addEventListener('touchend', startAutoScroll);
 
   updateCarousel();
   startAutoScroll();
@@ -65,6 +85,20 @@ function initProductSlideshow() {
       updateProductSlideshow();
     });
   });
+
+track.addEventListener('touchend', (e) => {
+  endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) { // Minimum swipe distance
+    if (diff > 0) {
+      goToNext(); // Swipe left → next
+    } else {
+      goToPrev(); // Swipe right → prev
+    }
+  }
+});
+
 
   setInterval(() => {
     currentProductIndex = (currentProductIndex + 1) % productCards.length;
