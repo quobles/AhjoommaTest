@@ -279,7 +279,8 @@ body {
   min-width: 250px;
   max-width: 400px;
   margin: 0 auto;
-  background: #ffb6c1;
+  background: #f72585;
+  color: white;
   padding: 20px;
   border-radius: 20px;
   text-align: center;
@@ -294,6 +295,7 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
+  color: black;
   transform: translateX(-50%) scale(0.8);
   opacity: 0;
   transition: all 0.5s ease;
