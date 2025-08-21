@@ -33,25 +33,6 @@ function initCarousel(carouselElement, auto = true) {
     });
   });
 
-  track.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-});
-
-track.addEventListener('touchend', (e) => {
-  endX = e.changedTouches[0].clientX;
-  let diff = startX - endX;
-
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) {
-      goToNext();
-    } else {
-      goToPrev();
-    }
-  }
-});
-
-
-  // Auto scroll
   function startAutoScroll() {
     if (auto) {
       stopAutoScroll();
@@ -62,12 +43,11 @@ track.addEventListener('touchend', (e) => {
 
   carouselElement.addEventListener('mouseenter', stopAutoScroll);
   carouselElement.addEventListener('mouseleave', startAutoScroll);
-  carouselElement.addEventListener('touchstart', stopAutoScroll);
-  carouselElement.addEventListener('touchend', startAutoScroll);
 
   updateCarousel();
   startAutoScroll();
 }
+
 
 function initProductSlideshow() {
   let productCards = document.querySelectorAll('.product-card');
@@ -86,20 +66,6 @@ function initProductSlideshow() {
     });
   });
 
-track.addEventListener('touchend', (e) => {
-  endX = e.changedTouches[0].clientX;
-  let diff = startX - endX;
-
-  if (Math.abs(diff) > 50)
-    if (diff > 0) {
-      goToNext();
-    } else {
-      goToPrev();
-    }
-  }
-});
-
-
   setInterval(() => {
     currentProductIndex = (currentProductIndex + 1) % productCards.length;
     updateProductSlideshow();
@@ -111,5 +77,5 @@ track.addEventListener('touchend', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   initCarousel(document.querySelector('.main-carousel'), true);
   initCarousel(document.querySelector('.featured-carousel'), true);
-  initProductSlideshow(); 
+  initProductSlideshow();
 });
