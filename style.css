@@ -101,7 +101,6 @@ body {
   position: absolute;
   top: 50%;
   background: #2f7d7d;
-  color: hotpink;
   border: none;
   padding: 10px;
   cursor: pointer;
@@ -140,7 +139,7 @@ body {
 
 .main-carousel .carousel-btn {
   color: white;
-  background: #b8f2f2;
+  background: #8deaea;
 }
 
 .main-carousel .carousel-btn:hover {
@@ -259,7 +258,7 @@ body {
 
 .featured-carousel .carousel-btn {
   color: white;
-  background: hotpink;
+  background: #ffa7b6;
 }
 
 .featured-carousel .carousel-btn.prev {
@@ -503,18 +502,6 @@ footer {
 }
 
 /* RESPONSIVE STUFFS */
-@media (max-width: 1024px) {
-  .footer-top,
-  .footer-bottom {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-card, .footer-section {
-    max-width: 600px;
-    text-align: center;
-  }
-}
 
 @media (max-width: 600px) {
   .footer-top,
@@ -534,6 +521,7 @@ footer {
   }
 }
 
+/* Tablet screen portrait mode */
 @media (max-width: 768px) {
   .featured-section {
     flex-direction: column;
@@ -541,20 +529,39 @@ footer {
   }
 }
 
-/* Tablet screens (≤ 1024px) */
+/* Tablet screens landscape mode */
 @media (max-width: 1024px) {
   .promo-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 30px;
+    padding-left: 180px;
+    padding-right: 180px;
   }
+
+    .categories {
+      grid-template-columns: repeat(2, 1fr);
+      width: 700px;
+      gap: 100px;
+      margin: 0px auto;
+    }
 
   .promotion .section-title {
     font-size: 1.5rem;
     padding: 8px 20px;
   }
+
+  .footer-top,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-card, .footer-section {
+    max-width: 600px;
+    text-align: center;
+  }
 }
 
-/* Mobile screens (≤ 600px) */
+/* Mobile screens */
 @media (max-width: 600px) {
   .promo-grid {
     grid-template-columns: 1fr;
