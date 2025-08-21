@@ -41,11 +41,11 @@ track.addEventListener('touchend', (e) => {
   endX = e.changedTouches[0].clientX;
   let diff = startX - endX;
 
-  if (Math.abs(diff) > 50) { // Minimum swipe distance
+  if (Math.abs(diff) > 50) {
     if (diff > 0) {
-      goToNext(); // Swipe left → next
+      goToNext();
     } else {
-      goToPrev(); // Swipe right → prev
+      goToPrev();
     }
   }
 });
@@ -90,11 +90,11 @@ track.addEventListener('touchend', (e) => {
   endX = e.changedTouches[0].clientX;
   let diff = startX - endX;
 
-  if (Math.abs(diff) > 50) { // Minimum swipe distance
+  if (Math.abs(diff) > 50)
     if (diff > 0) {
-      goToNext(); // Swipe left → next
+      goToNext();
     } else {
-      goToPrev(); // Swipe right → prev
+      goToPrev();
     }
   }
 });
@@ -109,7 +109,7 @@ track.addEventListener('touchend', (e) => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initCarousel(document.querySelector('.main-carousel'), true);     // main hero
-  initCarousel(document.querySelector('.featured-carousel'), true); // featured
-  initProductSlideshow();                                           // product cards
+  initCarousel(document.querySelector('.main-carousel'), true);
+  initCarousel(document.querySelector('.featured-carousel'), true);
+  initProductSlideshow(); 
 });

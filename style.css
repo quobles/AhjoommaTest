@@ -3,9 +3,7 @@ body {
   margin: 0;
 }
 
-/* ========================
-   NAVBAR
-======================== */
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -75,9 +73,7 @@ body {
   margin-left: 40px;
 }
 
-/* ========================
-   HOME CAROUSEL
-======================== */
+/* HOME CAROUSEL */
 .carousel {
   position: relative;
   overflow: hidden;
@@ -151,9 +147,7 @@ body {
   color: darkblue;
 }
 
-/* ========================
-   ITEM CATEGORIES
-======================== */
+/* CATEGORIES */
 .categories {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -189,9 +183,7 @@ body {
   border-radius: 8px;
 }
 
-/* ========================
-   FEATURED SECTION
-======================== */
+/* FEATURED SECTION */
 .featured-section {
   display: flex;
   justify-content: space-between;
@@ -244,6 +236,7 @@ body {
   cursor: pointer;
   border-radius: 50%;
 }
+
 
 .carousel-dots {
   margin-top: 10px;
@@ -344,7 +337,7 @@ body {
   opacity: 1;
 }
 
-/* --- New arrivals --- */
+/* --- NEW ARRIVALS --- */
 
 /* Section title */
 .promotion {
@@ -423,42 +416,7 @@ body {
   background: deeppink;
 }
 
-/* ====================
-   Responsive Breakpoints
-   ==================== */
-
-/* Tablet screens (≤ 1024px) */
-@media (max-width: 1024px) {
-  .promo-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 30px;
-  }
-
-  .promotion .section-title {
-    font-size: 1.5rem;
-    padding: 8px 20px;
-  }
-}
-
-/* Mobile screens (≤ 600px) */
-@media (max-width: 600px) {
-  .promo-grid {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .promo-card {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .promotion .section-title {
-    font-size: 1.2rem;
-    padding: 6px 15px;
-  }
-}
-
-/* Base styles */
+/* FOOTER STYLES */
 footer {
   font-family: Arial, sans-serif;
   color: #003333;
@@ -536,7 +494,7 @@ footer {
   text-align: center;
 }
 
-/* Responsive adjustments */
+/* RESPONSIVE STUFFS */
 @media (max-width: 1024px) {
   .footer-top,
   .footer-bottom {
@@ -572,5 +530,36 @@ footer {
   .featured-section {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+/* Tablet screens (≤ 1024px) */
+@media (max-width: 1024px) {
+  .promo-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px;
+  }
+
+  .promotion .section-title {
+    font-size: 1.5rem;
+    padding: 8px 20px;
+  }
+}
+
+/* Mobile screens (≤ 600px) */
+@media (max-width: 600px) {
+  .promo-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .promo-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .promotion .section-title {
+    font-size: 1.2rem;
+    padding: 6px 15px;
   }
 }
