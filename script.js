@@ -33,6 +33,23 @@ function initCarousel(carouselElement, auto = true) {
     });
   });
 
+  track.addEventListener('touchstart', function(e) {
+  startX = e.touches[0].clientX;
+});
+
+track.addEventListener('touchend', function(e) {
+  endX = e.changedTouches[0].clientX;
+  var diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      goToNext();
+    } else {
+      goToPrev();
+    }
+  }
+});
+
   function startAutoScroll() {
     if (auto) {
       stopAutoScroll();
