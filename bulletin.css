@@ -149,7 +149,7 @@ body {
   border-radius: 20px;
   width: 40%;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
 
 @keyframes animatetop {
@@ -171,4 +171,3 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-
