@@ -5,7 +5,7 @@
 
 /* General Reset */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'font';
   margin: 0;
   background: #fff;
   color: #333;
@@ -67,7 +67,7 @@ body {
 }
 
 .promo-code {
-  flex: 0.3; /* 30% width */
+  flex: 0.20;
   background: #f8bcbc;
   border-radius: 15px;
   padding: 20px;
@@ -75,7 +75,7 @@ body {
 
 .promo-code input {
   display: block;
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin: 10px 0;
   border-radius: 15px;
@@ -83,7 +83,7 @@ body {
 }
 
 .promo-code button {
-  background: #e91e63;
+  background: hotpink;
   color: white;
   border: none;
   padding: 10px 15px;
