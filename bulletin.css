@@ -124,6 +124,10 @@ body {
   cursor: pointer;
 }
 
+.faqs button:hover {
+  background: #3ecddf;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -167,3 +171,4 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+
