@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 🔔 Notifications dropdown
+  // Notifications dropdown
   var notifBtn = document.querySelector(".notification-btn");
   var notifDropdown = document.querySelector(".notification-dropdown");
 
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 🔍 Search button toggle
+  // Search button toggle
   var searchBtn = document.querySelector(".search-button");
   var searchInput = document.querySelector(".search-input");
 
