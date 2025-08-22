@@ -17,6 +17,52 @@ body {
   border-bottom: 3px solid #000;
 }
 
+.notification-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 80px; /* sits below button */
+  right: 0;
+  background: #2cb5b3;
+  color: white;
+  width: 250px;
+  padding: 15px;
+  border-radius: 10px;
+  display: none; /* hidden by default */
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.notification-dropdown.show {
+  display: block;
+}
+
+.notification-dropdown h4 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 5px;
+}
+
+.notification-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-dropdown li {
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.notification-dropdown li:last-child {
+  border-bottom: none;
+}
+
 .navbar .left,
 .navbar .right {
   display: flex;
@@ -44,10 +90,23 @@ body {
   font-weight: bold;
 }
 
-.navbar .right a {
+.icon-btn {
   background: #5ce1e6;
-  color: black;
+  border-radius: 20px;
+  width: 50px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-left: 10px;
+  padding: 5px;
+  color: inherit;
 }
+
+.icon-btn:focus {
+  outline: none;
+}
+
 
 .search-container {
   display: flex;

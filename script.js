@@ -1,3 +1,28 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing carousel + product init
+  initCarousel(document.querySelector('.main-carousel'), true);
+  initCarousel(document.querySelector('.featured-carousel'), true);
+  initProductSlideshow();
+
+  // 🔔 Notification dropdown toggle
+  var notifBtn = document.querySelector(".notification-btn");
+  var notifDropdown = document.querySelector(".notification-dropdown");
+
+  notifBtn.addEventListener("click", function (e) {
+    e.stopPropagation(); // prevent closing immediately
+    notifDropdown.classList.toggle("show");
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!notifDropdown.contains(e.target) && !notifBtn.contains(e.target)) {
+      notifDropdown.classList.remove("show");
+    }
+  });
+});
+
+
+
 function initCarousel(carouselElement, auto = true) {
   let track = carouselElement.querySelector('.carousel-track');
   let slides = track ? Array.from(track.children) : [];
