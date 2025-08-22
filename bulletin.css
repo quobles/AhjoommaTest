@@ -87,7 +87,7 @@ body {
   color: white;
   border: none;
   padding: 10px 15px;
-  border-radius: 15px;
+  border-radius: 20px;
   cursor: pointer;
 }
 
@@ -162,3 +162,4 @@ body {
   background: #80deea;
   cursor: pointer;
 }
+
