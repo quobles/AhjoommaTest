@@ -50,89 +50,78 @@
       <marquee>Promo message here. Insert promo message here. Ahjooma's K-Mart</marquee>
     </div>
 
-    <!-- PROMO CODE + VIDEO -->
-    <div class="promo-section">
-      <div class="promo-code">
-        <h2>Promo Code</h2>
-        <input type="text" placeholder="Insert Code">
-        <button>Apply Code</button>
-      </div>
-      <div class="promo-video">
-        <div class="video-placeholder">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=OGaY3tnEGbdpzdEK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
+    <div class="bulletin-container">
+  <!-- Left Column -->
+  <div class="left-column">
+    <div class="card promo-card">
+      <h3>Promo Code</h3>
+      <input type="text" id="promoCode" placeholder="Insert Code"><br>
+      <button onclick="applyPromo()">Apply</button>
     </div>
 
-    <!-- DELIVERY AREAS -->
-    <div class="delivery">
-      <h3>Area Supports Ahjoomma’s Delivery</h3>
-      <ul>
-        <li>Camella, Salinas</li>
-        <li>Bacoor Cavite</li>
-        <li>Imus Cavite</li>
-        <li>Kawit Cavite</li>
-      </ul>
-      <small>NOTE: Places not mentioned above will be using third-party delivery.</small>
+    <!-- Terms and Conditions -->
+    <div class="card">
+      <h3>Terms and Conditions</h3>
+      <p> This will acts as a contract between the website owner and users,
+        outlining the rules of using the site and protecting the business from
+        potential legal issues. T&Cs help establish clear expectations for users,
+        prevent abuse, protect intellectual property, and limit liability. </p>
+      <a href="#" onclick="openModal('termsModal')">View here</a>
     </div>
 
-    <!-- FOOTER BOXES -->
-    <div class="footer-boxes">
-      <div class="box social">
-        <h4>Be updated and keep in touch!</h4>
-        <p>📘 Facebook</p>
-        <p>📸 Instagram</p>
-        <p>🎵 TikTok</p>
-      </div>
-      <div class="box terms">
-        <h4>Terms and Conditions</h4>
-        <a href="#">View here</a>
-        <p> This will acts as a contract between the website owner and users, outlining the rules of using the site and protecting the business from potential legal issues. T&Cs help establish clear expectations for users, prevent abuse, protect intellectual property, and limit liability.</p>
-      </div>
-      <div class="box faqs">
-        <h4>FAQs</h4>
-        <!-- Store hours modal -->
-        <div id="store-hours-modal" class="modal">
-  <!-- Modal content -->
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>10:00AM – 9:00PM<br>
-             Monday – Sunday</p>
-          <p>10:00AM – 9:00PM<br>
-             Holidays</p>
-            </div>
+    <!-- FAQs -->
+    <div class="card faqs">
+      <h3>FAQs</h3>
+      <button class="faq-btn" data-modal="faq1">What are your Store Hours?</button><br>
+      <button class="faq-btn" data-modal="faq2">Do you have parking space?</button><br>
+      <button class="faq-btn" data-modal="faq3">What can we expect in store?</button><br>
+      <button class="faq-btn" data-modal="faq4">Can we franchise?</button><br>
+      <a href="#">View more here</a>
+
+    </div><!-- Modals -->
+<div id="faq1" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Store hours</h3>
+    <p>We are open daily from 10:00 AM to 9:00 PM.</p>
+  </div>
+</div>
+
+<div id="faq2" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Do you have parking space?</h3>
+    <p>Yes, we have a designated parking area for our customers.</p>
+  </div>
+</div>
+
+<div id="faq3" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>What can we expect in the store?</h3>
+    <p>Our store offers exclusive promos, quality products, and a great shopping experience.</p>
+  </div>
+</div>
+
+<div id="faq4" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Can we franchise?</h3>
+    <p>Yes, franchise opportunities are available. Please contact our team for more details.</p>
+  </div>
+</div>
+  </div>
+
+  <!-- Right Column -->
+  <div class="right-column">
+    <div class="card video-card">
+      <iframe width="100%" height="400"
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              frameborder="0" allowfullscreen></iframe>
     </div>
-        <button id="hours">What are your Store Hours?</button>
-        <!-- Parking modal -->
-        <div id="parking-modal" class="modal">
-  <!-- Modal content -->
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>siguro</p>
-            </div>
-    </div>
-        <button id="parking">Do you have parking space?</button>
-        <!-- Expect modal -->
-        <div id="expect-modal" class="modal">
-  <!-- Modal content -->
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Products</p>
-            </div>
-    </div>
-        <button id="expect">What can we expect to your physical store?</button>
-        <!-- Store hours modal -->
-        <div id="franchise-modal" class="modal">
-  <!-- Modal content -->
-      <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>secret</p>
-            </div>
-    </div>
-        <button id="franchise">Can we franchise?</button>
-        <a href="#">View more here</a>
-      </div>
-    </div>
+  </div>
+</div>
+
 
     <script src="script.js" defer></script>
     <script src="bulletin.js" defer></script>

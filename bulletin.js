@@ -1,41 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var modals = {
-    hours: document.getElementById("store-hours-modal"),
-    parking: document.getElementById("parking-modal"),
-    expect: document.getElementById("expect-modal"),
-    franchise: document.getElementById("franchise-modal")
-  };
+  // FAQ modals
+  var faqBtns = document.querySelectorAll(".faq-btn");
+  faqBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var modalId = this.getAttribute("data-modal");
+      document.getElementById(modalId).style.display = "block";
+    });
+  });
 
-  var buttons = {
-    hours: document.getElementById("hours"),
-    parking: document.getElementById("parking"),
-    expect: document.getElementById("expect"),
-    franchise: document.getElementById("franchise")
-  };
+  var closeBtns = document.querySelectorAll(".modal .close");
+  closeBtns.forEach(function (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      this.closest(".modal").style.display = "none";
+    });
+  });
 
-  var closeButtons = document.querySelectorAll(".modal .close");
-
-  Object.keys(buttons).forEach(function (key) {
-    if (buttons[key]) {
-      buttons[key].onclick = function () {
-        if (modals[key]) {
-          modals[key].style.display = "block";
-        }
-      };
+  window.addEventListener("click", function (e) {
+    if (e.target.classList.contains("modal")) {
+      e.target.style.display = "none";
     }
   });
-
-  closeButtons.forEach(function (btn) {
-    btn.onclick = function () {
-      btn.closest(".modal").style.display = "none";
-    };
-  });
-
-  window.onclick = function (event) {
-    Object.values(modals).forEach(function (modal) {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  };
-});
