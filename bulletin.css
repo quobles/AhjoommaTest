@@ -231,8 +231,12 @@ body {
 
 .feedback-form button {
   background: #e91e63;
+  display: inline-block;
+  margin: auto;
+  width: 20%;
   color: #fff;
   border: none;
+  left: 100px;
   padding: 12px;
   border-radius: 20px;
   font-size: 1rem;
