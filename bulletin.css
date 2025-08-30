@@ -87,6 +87,7 @@ body {
   height: 100%;
   text-align: center;
   background: rgba(0,0,0,0.5);
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -94,8 +95,8 @@ body {
   margin: 10% auto;
   padding: 20px;
   border-radius: 15px;
-  width: 60%;
-  max-width: 500px;
+  width: 90%;           /* shrink for mobile */
+  max-width: 500px;     /* limit for desktop */
   text-align: left;
 }
 
@@ -322,5 +323,14 @@ body {
   .card {
     margin-bottom: 20px; /* add spacing between stacked blocks */
     width: 100%;         /* full width cards on mobile */
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;         /* even more narrow for small screens */
+    margin: 20% auto;   /* push it lower for better spacing */
+    font-size: 14px;    /* smaller text */
+    padding: 15px;
   }
 }
