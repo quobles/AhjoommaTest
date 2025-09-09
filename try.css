@@ -3,6 +3,16 @@
   text-align: center;
 }
 
+.try-this-section h2{
+    font-weight: bold;
+    color: white;
+    background: #a9f0f5;
+    padding: 10px 25px;
+    border-radius: 25px;
+    display: inline-block;
+    margin: 0 auto;
+}
+
 .try-this-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
