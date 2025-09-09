@@ -133,9 +133,10 @@ document.addEventListener("DOMContentLoaded", () => {
         createdAt: serverTimestamp()
       });
 
-      alert("Registration successful!");
-      // Optional: redirect
-      // window.location.href = "index.html";
+      alert("Registration successful! Please log in.");
+      hide(registerForm);
+      show(loginForm);
+      formTitle.innerText = "Login";
     } catch (err) {
       alert(friendlyAuthError(err));
     }
@@ -152,6 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       alert("Welcome back, " + cred.user.email);
+      window.location.href = "index.html";
       // Optional: redirect
       // window.location.href = "index.html";
     } catch (err) {
