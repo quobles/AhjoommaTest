@@ -145,24 +145,61 @@ body {
   cursor: pointer;
 }
 
+/* Mobile responsiveness */
 @media (max-width: 480px) {
-  .auth-container {
-    margin: 0;
-    min-height: 100vh;
+  .auth-card {
     border-radius: 0;
     box-shadow: none;
+    width: 100%;
+    height: 100vh;
+    max-width: none;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  #form-title {
-    font-size: 1.25rem;
+  .auth-logo {
+    width: 90px;
+    margin-bottom: 15px;
+  }
+
+  .auth-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
   }
 
   .auth-form input,
   .auth-form button {
     font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  /* Modal adjustments */
+  .modal-content {
+    width: 90%;
+    margin: 20% auto;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .modal-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .modal-content p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .modal-content button {
+    width: 100%;
+    margin-top: 10px;
     padding: 10px;
   }
 }
