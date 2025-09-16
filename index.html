@@ -6,51 +6,66 @@
   <title>Ahjoomma's K-Mart</title>
 </head>
 <body>
+<script type="module" src="db.js" defer></script>
 
-<!-- START OF NAVBAR -->
-<div class="navbar">
-  <div class="left">
-    <a href="bulletin.html">Bulletin</a>
-    <a href="try.html">Try this</a>
-    <a href="about.html">About Us</a>
-  </div>
-<div class="logo">
-  <a href="index.html" class="logo">
-    <img src="https://placehold.co/800?text=Logo&font=roboto" class="logo">
-  </a>
-  </div>
-  <div class="right">
-    <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-      <input type="text" placeholder="Looking for something?" class="search-input">
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
     </div>
-    <button class="icon-btn cart-btn">🛒</button>
-    <button class="icon-btn profile-btn">👤</button>
-    <div class="notification-wrapper">
-    <button class="icon-btn notification-btn">🔔</button>
-    <div class="notification-dropdown">
-      <h4>Notifications</h4>
-      <ul>
-        <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
-        <li>🛒 Your order #1234 has shipped.</li>
-        <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
-      </ul>
-    </div>
-  </div>
 
-  <button class="icon-btn more-btn">⋯</button>
-</div>
-</div>
-<!-- END OF NAVBAR -->
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
+      </div>
+
+      <button class="icon-btn cart-btn">🛒</button>
+
+      <!-- Profile button + dropdown -->
+      <div class="profile-menu">
+        <button class="icon-btn profile-btn">👤</button>
+        <div class="profile-dropdown hidden">
+          <p class="user-name">Guest</p>
+          <button id="logoutBtn" class="logout-btn hidden">Log out</button>
+          <button id="loginBtn" class="login-btn">Log in</button>
+        </div>
+      </div>
+
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+            <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
+            <li>🛒 Your order #1234 has shipped.</li>
+            <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
+          </ul>
+        </div>
+      </div>
+
+      <button class="icon-btn more-btn">⋯</button>
+    </div>
+  </div>
+  <!-- END OF NAVBAR -->
+
 
 <!-- START OF MAIN CAROUSEL -->
 <div class="carousel main-carousel">
   <button class="carousel-btn prev">‹</button>
 
   <div class="carousel-track">
-    <img src="https://placehold.co/800?text=Placeholder&font=roboto">
-    <img src="https://placehold.co/800?text=Placeholder&font=roboto">
-    <img src="https://placehold.co/800?text=Placeholder&font=roboto">
+    <img src="images/banner1.png">
+    <img src="images/banner2.png">
+    <img src="images/banner3.png">
   </div>
 
   <button class="carousel-btn next">›</button>
