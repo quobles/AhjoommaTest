@@ -1,7 +1,12 @@
+// --- Firebase (modular CDN) ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
+// If analytics causes issues on http (non-https), you can comment it out during dev.
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+
+// --- Your Firebase config ---
 const firebaseConfig = {
   apiKey: "AIzaSyA5uPZtGvRC1VaqINKcVAWUWC9VyA1-b_s",
   authDomain: "ahjoommakmart.firebaseapp.com",
@@ -12,55 +17,156 @@ const firebaseConfig = {
   measurementId: "G-DNLHP8DS8Y"
 };
 
+// --- Init Firebase ---
 const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app); // optional
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-document.addEventListener("DOMContentLoaded", function () {
-  const profileBtn = document.querySelector("icon-btn.profile-btn");
-  if (!profileBtn) return;
+// --- Helpers ---
+function $(sel) { return document.querySelector(sel); }
+function show(el) { el.classList.remove("hidden"); }
+function hide(el) { el.classList.add("hidden"); }
 
-  const profileDropdown = document.createElement("div");
-  profileDropdown.className = "profile-dropdown";
-  document.body.appendChild(profileDropdown);
+function friendlyAuthError(err) {
+  const map = {
+    "auth/email-already-in-use": "That email is already registered.",
+    "auth/invalid-email": "Please enter a valid email.",
+    "auth/weak-password": "Password is too weak (min 6–8 chars).",
+    "auth/user-not-found": "No account found with that email.",
+    "auth/wrong-password": "Incorrect password.",
+    "auth/network-request-failed": "Network error. Check your connection."
+  };
+  return map[err.code] || err.message;
+}
 
-  onAuthStateChanged(auth, async function (user) {
-    if (user) {
-      let name = user.email;
-      try {
-        const snap = await getDoc(doc(db, "users", user.uid));
-        if (snap.exists() && snap.data().contactNo) {
-          name = snap.data().contactNo;
-        }
-      } catch (err) {
-        console.error("Could not fetch user data:", err);
-      }
+// --- DOM ready ---
+document.addEventListener("DOMContentLoaded", () => {
+  const loginForm = $("#login-form");
+  const registerForm = $("#register-form");
+  const formTitle = $("#form-title");
 
-      profileBtn.onclick = function (e) {
-        e.stopPropagation();
-        profileDropdown.innerHTML = `
-          <p>${name}</p>
-          <button id="logout-btn">Log out</button>
-        `;
-        profileDropdown.classList.toggle("show");
+  // Toggle Login/Register
+  $("#show-register").addEventListener("click", (e) => {
+    e.preventDefault();
+    hide(loginForm);
+    show(registerForm);
+    formTitle.innerText = "Register";
+  });
 
-        const logoutBtn = document.getElementById("logout-btn");
-        logoutBtn.onclick = async function () {
-          await signOut(auth);
-          profileDropdown.classList.remove("show");
-          alert("Logged out!");
-        };
-      };
-    } else {
-      profileBtn.onclick = function () {
-        window.location.href = "auth.html";
-      };
+  $("#show-login").addEventListener("click", (e) => {
+    e.preventDefault();
+    hide(registerForm);
+    show(loginForm);
+    formTitle.innerText = "Login";
+  });
+
+  // Terms modal
+  const termsLabel = $("#termsLabel");
+  const termsCheckbox = $("#termsCheckbox");
+  const termsModal = $("#termsModal");
+  const closeBtn = termsModal.querySelector(".close");
+  const acceptBtn = $("#acceptTermsBtn");
+
+  // Open modal via label/checkbox
+  termsLabel.addEventListener("click", (e) => {
+    e.preventDefault();
+    termsModal.style.display = "block";
+  });
+  termsCheckbox.addEventListener("click", (e) => {
+    e.preventDefault();
+    termsModal.style.display = "block";
+  });
+
+  // Accept → check & close
+  acceptBtn.addEventListener("click", () => {
+    termsCheckbox.checked = true;
+    termsModal.style.display = "none";
+  });
+
+  // Close → keep unchecked
+  closeBtn.addEventListener("click", () => {
+    termsCheckbox.checked = false;
+    termsModal.style.display = "none";
+  });
+
+  // Click outside closes
+  window.addEventListener("click", (e) => {
+    if (e.target === termsModal) {
+      termsCheckbox.checked = false;
+      termsModal.style.display = "none";
     }
   });
 
-  document.addEventListener("click", function (e) {
-    if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
-      profileDropdown.classList.remove("show");
+  // ------------------
+  // Register handler
+  // ------------------
+  registerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    if (!termsCheckbox.checked) {
+      alert("You must accept the Terms and Conditions to register.");
+      return;
+    }
+
+    const email = registerForm.querySelector('input[type="email"]').value.trim();
+    const pwInputs = registerForm.querySelectorAll('input[type="password"]');
+    const password = pwInputs[0].value;
+    const confirmPassword = pwInputs[1].value;
+    const firstName = registerForm.querySelector('input[placeholder="First Name"]').value.trim();
+    const lastName = registerForm.querySelector('input[placeholder="Last Name"]').value.trim();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      const user = cred.user;
+
+      // Create user profile doc
+      await setDoc(doc(db, "users", user.uid), {
+        firstName,
+        lastName,
+        email,
+        createdAt: serverTimestamp()
+      });
+
+      alert("Registration successful! Please log in.");
+      hide(registerForm);
+      show(loginForm);
+      formTitle.innerText = "Login";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
+  });
+
+  // -------------
+  // Login handler
+  // -------------
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = loginForm.querySelector('input[type="email"]').value.trim();
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      alert("Welcome back, " + cred.user.email);
+      window.location.href = "index.html";
+      // Optional: redirect
+      // window.location.href = "index.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
+  });
+
+  // Optional: react to sign-in state
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("Signed in as:", user.email);
+    } else {
+      console.log("Signed out");
     }
   });
 });

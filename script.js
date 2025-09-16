@@ -26,4 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
       searchInput.focus();
     });
   }
+
+  // Profile button redirect
+  var profileBtn = document.querySelector(".profile-btn");
+  if (profileBtn) {
+    profileBtn.addEventListener("click", function () {
+      window.location.href = "auth.html";
+    });
+  }
 });
