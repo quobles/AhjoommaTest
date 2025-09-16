@@ -1,9 +1,7 @@
-// --- Firebase (modular CDN) ---
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// --- Firebase config ---
 const firebaseConfig = {
   apiKey: "AIzaSyA5uPZtGvRC1VaqINKcVAWUWC9VyA1-b_s",
   authDomain: "ahjoommakmart.firebaseapp.com",
@@ -14,55 +12,55 @@ const firebaseConfig = {
   measurementId: "G-DNLHP8DS8Y"
 };
 
-// --- Init Firebase ---
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// --- Helper for friendlier errors ---
-function friendlyAuthError(err) {
-  const map = {
-    "auth/email-already-in-use": "That email is already registered.",
-    "auth/invalid-email": "Please enter a valid email.",
-    "auth/weak-password": "Password is too weak (min 6–8 chars).",
-    "auth/network-request-failed": "Network error. Check your connection."
-  };
-  return map[err.code] || err.message;
-}
-
-// --- DOM ready ---
 document.addEventListener("DOMContentLoaded", function () {
-  // grab the footer form
-  const footerForm = document.querySelector("footer form");
+  const profileBtn = document.querySelector("icon-btn.profile-btn");
+  if (!profileBtn) return;
 
-  if (!footerForm) {
-    console.error("Footer form not found!");
-    return;
-  }
+  const profileDropdown = document.createElement("div");
+  profileDropdown.className = "profile-dropdown";
+  document.body.appendChild(profileDropdown);
 
-  footerForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+  onAuthStateChanged(auth, async function (user) {
+    if (user) {
+      let name = user.email;
+      try {
+        const snap = await getDoc(doc(db, "users", user.uid));
+        if (snap.exists() && snap.data().contactNo) {
+          name = snap.data().contactNo;
+        }
+      } catch (err) {
+        console.error("Could not fetch user data:", err);
+      }
 
-    // get input values
-    const email = footerForm.querySelector('input[type="email"]').value.trim();
-    const contactNo = footerForm.querySelector('input[placeholder="Contact No."]').value.trim();
-    const password = footerForm.querySelector('input[type="password"]').value;
+      profileBtn.onclick = function (e) {
+        e.stopPropagation();
+        profileDropdown.innerHTML = `
+          <p>${name}</p>
+          <button id="logout-btn">Log out</button>
+        `;
+        profileDropdown.classList.toggle("show");
 
-    try {
-      // create Firebase Auth user
-      const cred = await createUserWithEmailAndPassword(auth, email, password);
+        const logoutBtn = document.getElementById("logout-btn");
+        logoutBtn.onclick = async function () {
+          await signOut(auth);
+          profileDropdown.classList.remove("show");
+          alert("Logged out!");
+        };
+      };
+    } else {
+      profileBtn.onclick = function () {
+        window.location.href = "auth.html";
+      };
+    }
+  });
 
-      // save extra info to Firestore
-      await setDoc(doc(db, "users", cred.user.uid), {
-        email: email,
-        contactNo: contactNo,
-        createdAt: serverTimestamp()
-      });
-
-      alert("Registration successful!");
-      footerForm.reset();
-    } catch (err) {
-      alert(friendlyAuthError(err));
+  document.addEventListener("click", function (e) {
+    if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+      profileDropdown.classList.remove("show");
     }
   });
 });
