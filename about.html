@@ -49,8 +49,20 @@
     <section class="about-section">
   <h2>About Our Store</h2>
   <div class="about-image">
-    <img src="https://placehold.co/800?text=Placeholder&font=roboto" alt="Our Store">
-  </div>
+  <img src="images/shelf1.jpg" alt="Store Photo 1" class="gallery-img">
+  <img src="images/shelf2.jpg" alt="Store Photo 2" class="gallery-img">
+  <img src="images/shelf3.jpg" alt="Store Photo 3" class="gallery-img">
+  <img src="images/shelf4.jpg" alt="Store Photo 4" class="gallery-img">
+  <img src="images/shelf5.jpg" alt="Store Photo 5" class="gallery-img">
+  <img src="images/shelf6.jpg" alt="Store Photo 6" class="gallery-img">
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+</div>
+
 </section>
 
 <section class="about-details">
@@ -61,7 +73,19 @@
     </p>
 
     <h3>Visit Our Physical Store</h3>
-    <img src="https://placehold.co/800?text=Placeholder&font=roboto" alt="Store Location">
+    <!-- Google Maps Embed -->
+<div class="map-container">
+  <iframe
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3863.825036514209!2d120.94474767484147!3d14.437244581055776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d31924d98d0b%3A0x2785d6da0792c450!2sAhjoomma&#39;s%20K-Mart!5e0!3m2!1sen!2sph!4v1758298403910!5m2!1sen!2sph"
+    width="100%"
+    height="450"
+    style="border:0; border-radius: 15px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
   </div>
 
   <div class="about-right">
@@ -106,5 +130,73 @@
 <!-- FOOTER END -->
 
     <script src="script.js" defer></script>
+    <script type="text/javascript">
+  // Gallery Lightbox
+  const galleryImages = document.querySelectorAll(".gallery-img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".lightbox .close");
+
+  let currentIndex = -1;
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", function() {
+      lightbox.style.display = "flex";
+      lightboxImg.src = this.src;
+      currentIndex = index;
+    });
+  });
+
+  closeBtn.addEventListener("click", function() {
+    lightbox.style.display = "none";
+  });
+
+  lightbox.addEventListener("click", function(e) {
+    if (e.target !== lightboxImg) {
+      lightbox.style.display = "none";
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", function(e) {
+    if (lightbox.style.display !== "flex") return;
+
+    if (e.key === "ArrowRight") {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex].src;
+    } else if (e.key === "ArrowLeft") {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentIndex].src;
+    } else if (e.key === "Escape") {
+      lightbox.style.display = "none";
+    }
+  });
+
+  // Swipe navigation for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener("touchstart", function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener("touchend", function(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    let diff = touchEndX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) {
+        currentIndex = (currentIndex + 1) % galleryImages.length;
+      } else {
+        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      }
+      lightboxImg.src = galleryImages[currentIndex].src;
+    }
+  }
+</script>
+
   </body>
 </html>
