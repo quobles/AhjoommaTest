@@ -1,32 +1,29 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Get category from URL
-  const params = new URLSearchParams(window.location.search);
-  const category = params.get("category") || "All";
-  document.getElementById("catalog-title").innerText = category;
+// catalog.js
+import { db } from "./db.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-  // Placeholder products (later: fetch from Firebase)
-  const products = [
-    { name: "Shin Ramyun", price: "₱50", img: "images/noodles.jpg", category: "Noodles" },
-    { name: "Samyang Spicy", price: "₱70", img: "images/noodles.jpg", category: "Noodles" },
-    { name: "Corned Beef", price: "₱85", img: "images/canned.jpg", category: "Canned" },
-    { name: "Milk Tea", price: "₱40", img: "images/beverages.jpg", category: "Beverages" },
-  ];
+async function loadProducts() {
+  const catalogContainer = document.getElementById("catalog");
+  catalogContainer.innerHTML = "";
 
-  const grid = document.getElementById("product-grid");
-  grid.innerHTML = "";
+  try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    querySnapshot.forEach((doc) => {
+      const product = doc.data();
 
-  products
-    .filter(p => category === "All" || p.category === category)
-    .forEach(product => {
       const card = document.createElement("div");
       card.classList.add("product-card");
       card.innerHTML = `
-        <img src="${product.img}" alt="${product.name}">
-        <div class="info">
-          <h3>${product.name}</h3>
-          <p>${product.price}</p>
-        </div>
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.category}</p>
+        <p>₱${product.price}</p>
       `;
-      grid.appendChild(card);
+      catalogContainer.appendChild(card);
     });
-});
+  } catch (err) {
+    console.error("Error loading products:", err);
+  }
+}
+
+loadProducts();
