@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="catalog.css">
   <script type="module" src="db.js" defer></script>
-  <script src="catalog.js" defer></script>
 </head>
 <script type="module" src="db.js" defer></script>
 <body>
@@ -47,13 +46,43 @@
   </div>
   <!-- END OF NAVBAR -->
 
-  <!-- Catalog Section -->
+  <!-- Catalog -->
   <section class="catalog-section">
     <h2 id="catalog-title">Category</h2>
     <div class="product-grid" id="product-grid">
-      <!-- Products will be injected here -->
+      <!-- Products go here -->
     </div>
   </section>
+  <script type="module">
+  import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+  import { db } from "./db.js"; // make sure db.js exports `db`
+
+  document.addEventListener("DOMContentLoaded", async function () {
+    const productList = document.getElementById("product-list");
+
+    try {
+      const querySnapshot = await getDocs(collection(db, "products"));
+      querySnapshot.forEach((doc) => {
+        const product = doc.data();
+
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <h3>${product.name}</h3>
+          <p>₱${product.price}</p>
+          <p><em>${product.category}</em></p>
+        `;
+        productList.appendChild(card);
+      });
+    } catch (err) {
+      console.error("Error fetching products:", err);
+    }
+  });
+
+  </script>
+
   <script src="script.js" defer></script>
+  <script src="catalog.js" defer></script>
 </body>
 </html>
