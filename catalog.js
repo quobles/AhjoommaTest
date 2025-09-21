@@ -1,29 +1,22 @@
-// catalog.js
 import { db } from "./db.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 async function loadProducts() {
-  const catalogContainer = document.getElementById("catalog");
-  catalogContainer.innerHTML = "";
+  const productsContainer = document.querySelector("#products-container");
+  if (!productsContainer) return;
 
-  try {
-    const querySnapshot = await getDocs(collection(db, "products"));
-    querySnapshot.forEach((doc) => {
-      const product = doc.data();
-
-      const card = document.createElement("div");
-      card.classList.add("product-card");
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.category}</p>
-        <p>₱${product.price}</p>
-      `;
-      catalogContainer.appendChild(card);
-    });
-  } catch (err) {
-    console.error("Error loading products:", err);
-  }
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    const product = doc.data();
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <h3>${product.name}</h3>
+      <p>${product.description || ""}</p>
+      <strong>₱${product.price}</strong>
+    `;
+    productsContainer.appendChild(card);
+  });
 }
 
-loadProducts();
+document.addEventListener("DOMContentLoaded", loadProducts);
