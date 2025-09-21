@@ -49,16 +49,16 @@
   <!-- Catalog -->
   <section class="catalog-section">
     <h2 id="catalog-title">Category</h2>
-    <div class="product-grid" id="product-grid">
+    <div class="product-list" id="product-grid">
       <!-- Products go here -->
     </div>
   </section>
-  <script type="module">
+  <script type="text/javascript">
   import { getDocs, collection } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
   import { db } from "./db.js"; // make sure db.js exports `db`
 
   document.addEventListener("DOMContentLoaded", async function () {
-    const productList = document.getElementById("product-grid");
+    const productList = document.getElementById("product-list");
 
     try {
       const querySnapshot = await getDocs(collection(db, "products"));
