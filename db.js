@@ -170,3 +170,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+export { db, auth };
