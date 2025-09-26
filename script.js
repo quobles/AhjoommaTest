@@ -27,11 +27,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Profile button redirect
-  var profileBtn = document.querySelector(".profile-btn");
-  if (profileBtn) {
-    profileBtn.addEventListener("click", function () {
-      window.location.href = "auth.html";
+  // Profile dropdown toggle
+  const profileBtn = document.querySelector(".profile-btn");
+  const profileDropdown = document.querySelector(".profile-dropdown");
+
+  if (profileBtn && profileDropdown) {
+    profileBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevent clicks from bubbling up
+      profileDropdown.classList.toggle("show");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+        profileDropdown.classList.remove("show");
+      }
     });
   }
+
 });
