@@ -61,14 +61,59 @@ document.addEventListener("DOMContentLoaded", () => {
     // Register handler
     registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      // ... your register logic
-    });
+
+    if (!termsCheckbox.checked) {
+      alert("You must accept the Terms and Conditions to register.");
+      return;
+    }
+
+    const email = registerForm.querySelector('input[type="email"]').value.trim();
+    const pwInputs = registerForm.querySelectorAll('input[type="password"]');
+    const password = pwInputs[0].value;
+    const confirmPassword = pwInputs[1].value;
+    const firstName = registerForm.querySelector('input[placeholder="First Name"]').value.trim();
+    const lastName = registerForm.querySelector('input[placeholder="Last Name"]').value.trim();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      const user = cred.user;
+
+      // Create user profile doc
+      await setDoc(doc(db, "users", user.uid), {
+        firstName,
+        lastName,
+        email,
+        createdAt: serverTimestamp()
+      });
+
+      alert("Registration successful!");
+      // Optional: redirect
+      // window.location.href = "index.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
+  });
 
     // Login handler
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      // ... your login logic
-    });
+    const email = loginForm.querySelector('input[type="email"]').value.trim();
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      alert("Welcome back, " + cred.user.email);
+      // Optional: redirect
+      // window.location.href = "index.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
+  });
   }
 
   // Terms modal (only runs if those elements exist)
