@@ -1,40 +1,41 @@
 import { db } from "./db.js";
-import {
-  collection,
-  getDocs
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// Grab the catalog grid container
+const catalogEl = document.getElementById("catalog");
 
 async function loadCatalog() {
-  const catalogContainer = document.getElementById("catalog");
-  catalogContainer.innerHTML = "<p>Loading products...</p>";
-
   try {
+    // Fetch all products
     const querySnapshot = await getDocs(collection(db, "products"));
 
     if (querySnapshot.empty) {
-      catalogContainer.innerHTML = "<p>No products found.</p>";
+      catalogEl.innerHTML = "<p>No products found.</p>";
       return;
     }
 
-    catalogContainer.innerHTML = ""; // clear loading text
-
+    // Render products
     querySnapshot.forEach((doc) => {
       const product = doc.data();
 
       const item = document.createElement("div");
       item.classList.add("product-card");
       item.innerHTML = `
-        <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}">
+        <img src="${product.image || "images/placeholder.png"}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>₱${product.price}</p>
-        <p><strong>Stock:</strong> ${product.stock ?? "N/A"}</p>
+        <p>Stock: ${product.stock}</p>
+        <p class="category">Category: ${product.category}</p>
+        <button>Add to Cart</button>
       `;
-      catalogContainer.appendChild(item);
+
+      catalogEl.appendChild(item);
     });
   } catch (err) {
-    console.error("Error loading catalog:", err);
-    catalogContainer.innerHTML = "<p>Failed to load products.</p>";
+    console.error("Error loading products:", err);
+    catalogEl.innerHTML = "<p>Failed to load products.</p>";
   }
 }
 
+// Run when DOM is ready
 document.addEventListener("DOMContentLoaded", loadCatalog);
