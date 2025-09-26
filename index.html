@@ -27,6 +27,12 @@
     </div>
     <button class="icon-btn cart-btn">🛒</button>
     <button class="icon-btn profile-btn">👤</button>
+    <div class="profile-wrapper">
+      <div class="profile-dropdown" id="profile-dropdown">
+        <p id="user-email">Not logged in</p>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
     <div class="notification-wrapper">
     <button class="icon-btn notification-btn">🔔</button>
     <div class="notification-dropdown">
@@ -262,5 +268,8 @@
 
 <script src="script.js" defer></script>
 <script src="index.js" defer></script>
+<script type="module" src="db.js" defer></script>
+<script type="module" src="auth.js" defer></script>
+
 </body>
 </html>
