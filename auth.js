@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Register
   registerForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = $("#register-email").value;
-    const pass = $("#register-password").value;
+    const email = $("#regEmail").value;
+    const pass = $("#regPassword").value;
 
     try {
       await createUserWithEmailAndPassword(auth, email, pass);
@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Login
   loginForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const email = $("#login-email").value;
-    const pass = $("#login-password").value;
+    const email = $("#loginEmail").value;
+    const pass = $("#loginPassword").value;
 
     try {
       await signInWithEmailAndPassword(auth, email, pass);
