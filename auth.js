@@ -70,3 +70,45 @@
     }
   });
 });
+
+// Register
+document.getElementById("register-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  var email = this.querySelector('input[type="email"]').value;
+  var password = this.querySelector('input[type="password"]').value;
+  var firstName = this.querySelector('input[placeholder="First Name"]').value;
+  var lastName = this.querySelector('input[placeholder="Last Name"]').value;
+
+  try {
+    const userCredential = await firebaseAuth.createUserWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+
+    // Store extra user data in Firestore
+    await setDoc(doc(firebaseDB, "users", user.uid), {
+      firstName: firstName,
+      lastName: lastName,
+      email: email
+    });
+
+    alert("Registration successful!");
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
+// Login
+document.getElementById("login-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  var email = this.querySelector('input[type="email"]').value;
+  var password = this.querySelector('input[type="password"]').value;
+
+  try {
+    const userCredential = await firebaseAuth.signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    alert("Welcome back, " + user.email);
+  } catch (error) {
+    alert(error.message);
+  }
+});
