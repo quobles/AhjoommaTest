@@ -1,27 +1,41 @@
-// --- Firebase (modular CDN) ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+import { db } from "./db.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// --- Firebase config ---
-const firebaseConfig = {
-  apiKey: "AIzaSyA5uPZtGvRC1VaqINKcVAWUWC9VyA1-b_s",
-  authDomain: "ahjoommakmart.firebaseapp.com",
-  projectId: "ahjoommakmart",
-  storageBucket: "ahjoommakmart.appspot.com",
-  messagingSenderId: "1098456404389",
-  appId: "1:1098456404389:web:7b057cc99258e122bf584c",
-  measurementId: "G-DNLHP8DS8Y"
-};
+async function loadProducts() {
+  try {
+    console.log("📡 Fetching products from Firestore...");
 
-// --- Init Firebase ---
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+    const productsRef = collection(db, "products"); // 👈 must be lowercase
+    const snap = await getDocs(productsRef);
 
-const db = getFirestore(app, {
-  host: "firestore.googleapis.com",
-  ssl: true
-});
+    if (snap.empty) {
+      console.warn("⚠️ No products found in Firestore.");
+      document.getElementById("catalog").innerHTML = "<p>No products found.</p>";
+      return;
+    }
 
-// --- Export for other scripts ---
-export { auth, db };
+    const catalog = document.getElementById("catalog");
+    catalog.innerHTML = ""; // clear old content
+
+    snap.forEach((doc) => {
+      const product = doc.data();
+      console.log("✅ Product found:", doc.id, product); // debug log
+
+      const item = document.createElement("div");
+      item.classList.add("product-card");
+      item.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>₱${product.price}</p>
+        <p>Stocks: ${product.stocks}</p>
+        <small>Category: ${product.category}</small>
+      `;
+      catalog.appendChild(item);
+    });
+  } catch (err) {
+    console.error("❌ Error loading products:", err);
+    document.getElementById("catalog").innerHTML = `<p>Error: ${err.message}</p>`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadProducts);
