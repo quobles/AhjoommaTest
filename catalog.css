@@ -1,22 +1,66 @@
 .catalog-grid {
+  position: relative;
+  z-index: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
 }
 
-.product-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 10px;
+.catalog-card {
+  background: #ffc0cb; /* light pink */
+  margin: 20px;
+  padding: 24px 10px;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   text-align: center;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #b71c4a;
+  gap: 20px;
 }
 
-.product-card img {
-  max-width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 6px;
+.catalog-card img {
+  width: 100%;
+  max-width: 160px;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  background: #f0f0f0;
+  display: block;
+}
+
+.catalog-card h3 {
+  font-size: 1.2rem;
+  margin: 12px 0 8px 0;
+  color: #c2185b; /* darker pink */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.catalog-card p {
+  margin: 4px 0;
+  color: #6d0037;
+  font-size: 1.1rem;
+}
+
+.catalog-card .add-to-cart,
+.catalog-card .quick-view {
+  background: #ff5ebc;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.catalog-card .add-to-cart:hover,
+.catalog-card .quick-view:hover {
+  background: #0d47a1;
 }
