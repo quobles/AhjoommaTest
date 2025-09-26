@@ -65,7 +65,7 @@ body {
 .profile-dropdown {
   position: absolute;
   right: 10px;
-  top: 50px;
+  top: 100px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -682,3 +682,4 @@ footer {
     padding: 6px 15px;
   }
 }
+
