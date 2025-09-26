@@ -81,13 +81,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Track state
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      console.log("Logged in:", user.email);
-      show(logoutBtn);
-    } else {
-      console.log("Logged out");
-      hide(logoutBtn);
-    }
-  });
+const userEmailEl = $("#user-email");
+const accountBtn = $("#account-btn");
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("Logged in:", user.email);
+    if (userEmailEl) userEmailEl.textContent = user.email;
+    show(logoutBtn);
+    hide(accountBtn);
+  } else {
+    console.log("Logged out");
+    if (userEmailEl) userEmailEl.textContent = "Not logged in";
+    hide(logoutBtn);
+    show(accountBtn);
+  }
+});
+
+// Logout
+logoutBtn?.addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "index.html"; // redirect after logout
+});
+
 });
