@@ -6,56 +6,48 @@ p {
   margin: 20px;
 }
 
+label {
+  margin: 0 0 0 20px;
+}
+
 .catalog-grid {
-  position: relative;
-  z-index: 2;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
-  margin: 32px 0;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  justify-items: center;
+  padding: 50px;
 }
 
 .catalog-card {
   background: #ffc0cb; /* light pink */
-  margin: 20px;
-  padding: 24px 10px;
-  border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 15px;
+  border-radius: 20px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #b71c4a;
-  gap: 20px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .catalog-card img {
-  width: 100%;
-  max-width: 160px;
-  height: 160px;
+  background: #fff;
   object-fit: contain;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  background: #f0f0f0;
-  display: block;
+  width: 220px;
+  border-radius: 15px;
+  margin-bottom: 10px;
 }
 
 .catalog-card h3 {
-  font-size: 1.2rem;
-  margin: 12px 0 8px 0;
+  font-size: 1rem;
   color: #c2185b; /* darker pink */
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  margin: 5px 0;
 }
 
 .catalog-card p {
-  margin: 4px 0;
+  font-size: 0.9rem;
   color: #6d0037;
-  font-size: 1.1rem;
+  margin-bottom: 10px;
 }
 
-.catalog-card .add-to-cart,
-.catalog-card .quick-view {
+.add-to-cart{
   background: #ff5ebc;
   color: #fff;
   border: none;
@@ -67,8 +59,6 @@ p {
   margin-top: 18px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-
-.catalog-card .add-to-cart:hover,
-.catalog-card .quick-view:hover {
-  background: #0d47a1;
+.add-to-cart:hover {
+  background: deeppink;
 }

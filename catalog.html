@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
   <meta charset="UTF-8">
   <title>Catalog - Ahjoomma’s K-Mart</title>
   <link rel="stylesheet" href="style.css">
@@ -29,7 +30,7 @@
       <div class="profile-wrapper">
         <div class="profile-dropdown" id="profile-dropdown">
           <p id="user-email">Not logged in</p>
-          <a href="auth.html">Account</a>
+        <a href="auth.html">Login / Register</a>
           <button class="hidden" id="logout-btn">Logout</button>
         </div>
       </div>
@@ -52,6 +53,23 @@
 
   <!-- Catalog -->
   <h2 class="title">Our Products</h2>
+
+  <div class="category-filter">
+  <label for="category-select">Choose a category: </label>
+  <select id="category-select">
+    <option value="">All</option>
+    <option value="Nori">Nori</option>
+    <option value="Noodles">Noodles</option>
+    <option value="Canned">Canned</option>
+    <option value="Beverages">Beverages</option>
+    <option value="Snacks">Snacks</option>
+    <option value="IceCream">Ice Cream</option>
+    <option value="Equipments">Equipments</option>
+    <option value="Frozen">Frozen</option>
+    <option value="HomeEssentials">Home Essentials</option>
+    <option value="Others">Others</option>
+  </select>
+</div>
   <div id="catalog" class="catalog-grid">
     
   </div>

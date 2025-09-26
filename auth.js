@@ -47,18 +47,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Register
-  registerForm?.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const email = $("#regEmail").value;
-    const pass = $("#regPassword").value;
+registerForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const firstName = $("#regFirstName").value.trim();
+  const lastName = $("#regLastName").value.trim();
+  const email = $("#regEmail").value.trim();
+  const pass = $("#regPassword").value;
+  const confirmPass = $("#regConfirmPassword").value;
+  const termsChecked = $("#termsCheckbox").checked;
 
-    try {
-      await createUserWithEmailAndPassword(auth, email, pass);
-      alert("Registration successful!");
-    } catch (err) {
-      alert(friendlyAuthError(err));
-    }
-  });
+  if (pass !== confirmPass) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  if (!termsChecked) {
+    alert("You must accept the Terms and Conditions.");
+    return;
+  }
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, pass);
+    alert(`Welcome ${firstName}! Registration successful.`);
+    window.location.href = "index.html";
+  } catch (err) {
+    alert(friendlyAuthError(err));
+  }
+});
+
+const modal = document.getElementById("termsModal");
+const closeBtn = document.querySelector(".modal .close");
+const acceptBtn = document.getElementById("acceptTermsBtn");
+
+$("#termsLabel")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.style.display = "block";
+});
+
+closeBtn?.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+acceptBtn?.addEventListener("click", () => {
+  $("#termsCheckbox").checked = true;
+  modal.style.display = "none";
+});
+
+// Close modal if clicking outside
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
 
   // Login
   loginForm?.addEventListener("submit", async (e) => {
@@ -80,23 +121,31 @@ document.addEventListener("DOMContentLoaded", () => {
     await signOut(auth);
   });
 
-  // Track state
-const userEmailEl = $("#user-email");
-const accountBtn = $("#account-btn");
-
+// Track state
 onAuthStateChanged(auth, (user) => {
+  const emailEl = document.getElementById("user-email");
+  const loginLink = document.getElementById("login-link");
+  const logoutBtn = document.getElementById("logout-btn");
+
   if (user) {
-    console.log("Logged in:", user.email);
-    if (userEmailEl) userEmailEl.textContent = user.email;
-    show(logoutBtn);
-    hide(accountBtn);
+    // Logged in
+    if (emailEl) {
+      emailEl.textContent = user.email;
+      emailEl.classList.remove("hidden");
+    }
+    if (loginLink) loginLink.classList.add("hidden");
+    if (logoutBtn) logoutBtn.classList.remove("hidden");
   } else {
-    console.log("Logged out");
-    if (userEmailEl) userEmailEl.textContent = "Not logged in";
-    hide(logoutBtn);
-    show(accountBtn);
+    // Logged out
+    if (emailEl) {
+      emailEl.textContent = "";
+      emailEl.classList.add("hidden");
+    }
+    if (loginLink) loginLink.classList.remove("hidden");
+    if (logoutBtn) logoutBtn.classList.add("hidden");
   }
 });
+
 
 // Logout
 logoutBtn?.addEventListener("click", async () => {

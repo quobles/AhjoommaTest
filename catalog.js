@@ -1,19 +1,16 @@
 import { db } from "./db.js";
 import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-async function loadCatalog() {
+async function loadCatalog(selectedCategory = "") {
   const catalogContainer = document.getElementById("catalog");
   catalogContainer.innerHTML = "<p>Loading products...</p>";
-
-  // Get category from URL
-  const params = new URLSearchParams(window.location.search);
-  const selectedCategory = params.get('category');
 
   try {
     let q = collection(db, "products");
     if (selectedCategory) {
       q = query(q, where("category", "==", selectedCategory));
     }
+
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {
@@ -31,7 +28,7 @@ async function loadCatalog() {
         <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>₱${product.price}</p>
-        <p><strong>Stocks:</strong> ${product.stocks ?? "N/A"}</br>
+        <p><strong>Stocks:</strong> ${product.stocks ?? "N/A"}</p>
         <button class="add-to-cart">ADD TO CART</button>
       `;
       catalogContainer.appendChild(item);
@@ -42,4 +39,22 @@ async function loadCatalog() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", loadCatalog);
+document.addEventListener("DOMContentLoaded", () => {
+  // Check for ?category=... in URL
+  const params = new URLSearchParams(window.location.search);
+  const selectedCategory = params.get("category") || "";
+
+  // Set dropdown value
+  const categorySelect = document.getElementById("category-select");
+  if (selectedCategory) {
+    categorySelect.value = selectedCategory;
+  }
+
+  // Load catalog with selected category
+  loadCatalog(selectedCategory);
+
+  // Update catalog when dropdown changes
+  categorySelect.addEventListener("change", (e) => {
+    loadCatalog(e.target.value);
+  });
+});
