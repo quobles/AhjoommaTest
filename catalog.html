@@ -14,10 +14,10 @@
       <a href="try.html">Try this</a>
       <a href="about.html">About Us</a>
     </div>
-    <div class="logo">
-      <a href="index.html" class="logo">
-        <img src="images/logoWhite.png" class="logo">
-      </a>
+  <div class="logo">
+    <a href="index.html" class="logo">
+      <img src="images/logoWhite.png" class="logo">
+    </a>
     </div>
     <div class="right">
       <div class="search-container">
@@ -26,19 +26,27 @@
       </div>
       <button class="icon-btn cart-btn">🛒</button>
       <button class="icon-btn profile-btn">👤</button>
-      <div class="notification-wrapper">
-        <button class="icon-btn notification-btn">🔔</button>
-        <div class="notification-dropdown">
-          <h4>Notifications</h4>
-          <ul>
-            <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
-            <li>🛒 Your order #1234 has shipped.</li>
-            <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
-          </ul>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email">Not logged in</p>
+          <a href="auth.html">Account</a>
+          <button class="hidden" id="logout-btn">Logout</button>
         </div>
       </div>
-      <button class="icon-btn more-btn">⋯</button>
+      <div class="notification-wrapper">
+      <button class="icon-btn notification-btn">🔔</button>
+      <div class="notification-dropdown">
+        <h4>Notifications</h4>
+        <ul>
+          <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
+          <li>🛒 Your order #1234 has shipped.</li>
+          <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
+        </ul>
+      </div>
     </div>
+
+    <button class="icon-btn more-btn">⋯</button>
+  </div>
   </div>
   <!-- END OF NAVBAR -->
 
