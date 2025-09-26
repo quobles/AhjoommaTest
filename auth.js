@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       await signInWithEmailAndPassword(auth, email, pass);
       alert("Login successful!");
+      window.location.href = "index.html";
     } catch (err) {
       alert(friendlyAuthError(err));
     }
