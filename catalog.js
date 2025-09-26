@@ -1,19 +1,38 @@
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 import { db } from "./db.js";
+import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-async function testFirestore() {
+
+async function loadCatalog() {
+  const catalogContainer = document.getElementById("catalog");
+  catalogContainer.innerHTML = "<p>Loading products...</p>";
+
   try {
-    const snapshot = await getDocs(collection(db, "products"));
-    if (snapshot.empty) {
-      console.log("⚠️ No documents found in 'products' collection.");
-    } else {
-      snapshot.forEach(doc => {
-        console.log("✅ Found doc:", doc.id, doc.data());
-      });
+    const querySnapshot = await getDocs(collection(db, "products"));
+
+    if (querySnapshot.empty) {
+      catalogContainer.innerHTML = "<p>No products found.</p>";
+      return;
     }
+
+    catalogContainer.innerHTML = ""; // clear loading text
+
+    querySnapshot.forEach((doc) => {
+      const product = doc.data();
+
+      const item = document.createElement("div");
+      item.classList.add("product-card");
+      item.innerHTML = `
+        <img src="${product.image || 'images/placeholder.png'}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>₱${product.price}</p>
+        <p><strong>Stocks:</strong> ${product.stocks ?? "N/A"}</p>
+      `;
+      catalogContainer.appendChild(item);
+    });
   } catch (err) {
-    console.error("❌ Firestore error:", err);
+    console.error("Error loading catalog:", err);
+    catalogContainer.innerHTML = "<p>Failed to load products.</p>";
   }
 }
 
-testFirestore();
+document.addEventListener("DOMContentLoaded", loadCatalog);
