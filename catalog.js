@@ -18,13 +18,15 @@ async function loadCatalog() {
     querySnapshot.forEach((doc) => {
       const product = doc.data();
 
+      console.log("Loaded product:", product); // 🔍 debug log
+
       const item = document.createElement("div");
       item.classList.add("product-card");
       item.innerHTML = `
         <img src="${product.image || "images/placeholder.png"}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>₱${product.price}</p>
-        <p>Stock: ${product.stock}</p>
+        <p>Stocks: ${product.stocks}</p>
         <p class="category">Category: ${product.category}</p>
         <button>Add to Cart</button>
       `;
