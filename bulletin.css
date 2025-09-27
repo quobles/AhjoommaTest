@@ -25,8 +25,9 @@ body {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
-  width: 1480px;      /* fixed instead of max-width */
-  margin: 20px auto;  /* centers it */
+  max-width: 1480px;
+  width: 100%;
+  margin: 20px auto;
   align-items: start;
   padding-bottom: 40px;
   border-bottom: 2px solid #000;
