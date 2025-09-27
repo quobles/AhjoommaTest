@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+  <meta charset="UTF-8">
+  <title>Checkout - Ahjoomma’s K-Mart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
+      </div>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+            <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
+            <li>🛒 Your order #1234 has shipped.</li>
+            <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn">⋯</button>
+    </div>
+  </div>
+  <!-- END OF NAVBAR -->
+
+  <h2 class="title">Checkout</h2>
+
+  <div class="checkout-container">
+    <div id="checkout-items"></div>
+
+    <div class="checkout-summary">
+      <h3>Order Summary</h3>
+      <p>Items Total: ₱<span id="items-total">0</span></p>
+
+      <label>
+        Delivery Option:
+        <select id="delivery-option">
+          <option value="pickup">Pickup in store</option>
+          <option value="delivery">Delivery</option>
+        </select>
+      </label>
+
+      <div id="delivery-area-container" class="hidden">
+        <label>
+          Delivery Area:
+          <select id="delivery-area">
+            <option value="" disabled selected>Select area</option>
+            <option value="molino" data-fee="60">Molino - ₱60</option>
+            <option value="salinas" data-fee="50">Salinas - ₱50</option>
+            <option value="bucandala" data-fee="70">Bucandala - ₱70</option>
+            <option value="tanzangluma" data-fee="80">Tanzang Luma - ₱80</option>
+          </select>
+        </label>
+      </div>
+
+      <p>Delivery Fee: ₱<span id="delivery-fee">0</span></p>
+      <p><strong>Total: ₱<span id="grand-total">0</span></strong></p>
+
+      <button id="place-order" class="checkout-btn disabled" disabled>Place Order</button>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script type="module" src="checkout.js" defer></script>
+  <script type="module" src="auth.js" defer></script>
+</body>
+</html>

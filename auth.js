@@ -153,4 +153,25 @@ logoutBtn?.addEventListener("click", async () => {
   window.location.href = "index.html"; // redirect after logout
 });
 
+const loginPassword = document.getElementById("loginPassword");
+  const toggleLoginPassword = document.getElementById("toggle-login-password");
+
+  const regPassword = document.getElementById("regPassword");
+  const toggleRegPassword = document.getElementById("toggle-register-password");
+
+  const regConfirmPassword = document.getElementById("regConfirmPassword");
+  const toggleRegConfirmPassword = document.getElementById("toggle-register-confirm");
+
+  toggleLoginPassword?.addEventListener("change", () => {
+    loginPassword.type = toggleLoginPassword.checked ? "text" : "password";
+  });
+
+  toggleRegPassword?.addEventListener("change", () => {
+    regPassword.type = toggleRegPassword.checked ? "text" : "password";
+  });
+
+  toggleRegConfirmPassword?.addEventListener("change", () => {
+    regConfirmPassword.type = toggleRegConfirmPassword.checked ? "text" : "password";
+  });
+
 });

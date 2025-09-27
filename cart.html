@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+  <meta charset="UTF-8">
+  <title>Cart - Ahjoomma’s K-Mart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
+    </div>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
+      </div>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+            <li>📢 Promo: Buy 1 Take 1 on Ramen!</li>
+            <li>🛒 Your order #1234 has shipped.</li>
+            <li>🎉 Welcome to Ahjoomma’s K-Mart!</li>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn">⋯</button>
+    </div>
+  </div>
+  <!-- END OF NAVBAR -->
+
+  <h2 class="title">Your Cart</h2>
+  <div id="cart-container" class="cart-container">
+    <p>Loading cart...</p>
+  </div>
+
+  <div class="cart-summary">
+    <h3>Total: ₱<span id="cart-total">0</span></h3>
+    <button class="checkout-btn disabled" disabled>Checkout</button>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script type="module" src="cart.js" defer></script>
+  <script type="module" src="auth.js" defer></script>
+</body>
+</html>

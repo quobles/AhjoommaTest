@@ -16,16 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Search button toggle
-  var searchBtn = document.querySelector(".search-button");
-  var searchInput = document.querySelector(".search-input");
-
-  if (searchBtn && searchInput) {
-    searchBtn.addEventListener("click", function () {
-      searchInput.classList.toggle("active");
-      searchInput.focus();
-    });
-  }
 
   // Profile dropdown toggle
   const profileBtn = document.querySelector(".profile-btn");
@@ -42,6 +32,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
         profileDropdown.classList.remove("show");
       }
+    });
+  }
+
+  
+  var cartBtn = document.querySelector(".icon-btn.cart-btn");
+  if (cartBtn) {
+    cartBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      window.location.href = "cart.html";
     });
   }
 

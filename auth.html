@@ -26,6 +26,9 @@
                minlength="8"
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                title="At least 8 characters, 1 uppercase, 1 lowercase, and 1 number">
+               <label class="show-password">
+  <input type="checkbox" id="toggle-login-password"> Show Password
+</label>
         <button id="btnLogin" type="submit">Login</button>
         <p class="switch">Don’t have an account?
           <a href="#" id="show-register">Register</a>
@@ -53,6 +56,9 @@
                title="At least 8 characters, 1 uppercase, 1 lowercase, and 1 number">
         <input type="password" placeholder="Confirm Password" required
                id="regConfirmPassword">
+               <label class="show-password">
+  <input type="checkbox" id="toggle-login-password"> Show Password
+</label>
         <div class="terms-container">
     <input type="checkbox" id="termsCheckbox">
     <label for="termsCheckbox" id="termsLabel">
