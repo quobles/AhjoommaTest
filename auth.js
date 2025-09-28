@@ -1,10 +1,15 @@
-import { auth } from "./db.js";
+import { auth, db } from "./db.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+import {
+  doc,
+  setDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
 // Helpers
 function $(sel) { return document.querySelector(sel); }
@@ -47,59 +52,65 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Register
-registerForm?.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const firstName = $("#regFirstName").value.trim();
-  const lastName = $("#regLastName").value.trim();
-  const email = $("#regEmail").value.trim();
-  const pass = $("#regPassword").value;
-  const confirmPass = $("#regConfirmPassword").value;
-  const termsChecked = $("#termsCheckbox").checked;
+  registerForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const firstName = $("#regFirstName").value.trim();
+    const lastName = $("#regLastName").value.trim();
+    const email = $("#regEmail").value.trim();
+    const pass = $("#regPassword").value;
+    const confirmPass = $("#regConfirmPassword").value;
+    const termsChecked = $("#termsCheckbox").checked;
 
-  if (pass !== confirmPass) {
-    alert("Passwords do not match.");
-    return;
-  }
+    if (pass !== confirmPass) {
+      alert("Passwords do not match.");
+      return;
+    }
 
-  if (!termsChecked) {
-    alert("You must accept the Terms and Conditions.");
-    return;
-  }
+    if (!termsChecked) {
+      alert("You must accept the Terms and Conditions.");
+      return;
+    }
 
-  try {
-    await createUserWithEmailAndPassword(auth, email, pass);
-    alert(`Welcome ${firstName}! Registration successful.`);
-    window.location.href = "index.html";
-  } catch (err) {
-    alert(friendlyAuthError(err));
-  }
-});
+    try {
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
-const modal = document.getElementById("termsModal");
-const closeBtn = document.querySelector(".modal .close");
-const acceptBtn = document.getElementById("acceptTermsBtn");
+      // Save extra info + role into Firestore
+      await setDoc(doc(db, "users", cred.user.uid), {
+        firstName,
+        lastName,
+        email,
+        role: "user" // default role
+      });
 
-$("#termsLabel")?.addEventListener("click", (e) => {
-  e.preventDefault();
-  modal.style.display = "block";
-});
+      alert(`Welcome ${firstName}! Registration successful.`);
+      window.location.href = "index.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
+  });
 
-closeBtn?.addEventListener("click", () => {
-  modal.style.display = "none";
-});
+  // Terms modal
+  const modal = document.getElementById("termsModal");
+  const closeBtn = document.querySelector(".modal .close");
+  const acceptBtn = document.getElementById("acceptTermsBtn");
 
-acceptBtn?.addEventListener("click", () => {
-  $("#termsCheckbox").checked = true;
-  modal.style.display = "none";
-});
+  $("#termsLabel")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "block";
+  });
 
-// Close modal if clicking outside
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
+  closeBtn?.addEventListener("click", () => {
     modal.style.display = "none";
-  }
-});
+  });
 
+  acceptBtn?.addEventListener("click", () => {
+    $("#termsCheckbox").checked = true;
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
 
   // Login
   loginForm?.addEventListener("submit", async (e) => {
@@ -119,41 +130,50 @@ window.addEventListener("click", (e) => {
   // Logout
   logoutBtn?.addEventListener("click", async () => {
     await signOut(auth);
+    window.location.href = "index.html"; // redirect after logout
   });
 
-// Track state
-onAuthStateChanged(auth, (user) => {
-  const emailEl = document.getElementById("user-email");
-  const loginLink = document.getElementById("login-link");
-  const logoutBtn = document.getElementById("logout-btn");
+  // Track state + check role
+  onAuthStateChanged(auth, async (user) => {
+    const emailEl = document.getElementById("user-email");
+    const loginLink = document.getElementById("login-link");
+    const logoutBtn = document.getElementById("logout-btn");
 
-  if (user) {
-    // Logged in
-    if (emailEl) {
-      emailEl.textContent = user.email;
-      emailEl.classList.remove("hidden");
+    if (user) {
+      if (emailEl) {
+        emailEl.textContent = user.email;
+        emailEl.classList.remove("hidden");
+      }
+      if (loginLink) loginLink.classList.add("hidden");
+      if (logoutBtn) logoutBtn.classList.remove("hidden");
+
+      // Fetch role from Firestore
+      const userRef = doc(db, "users", user.uid);
+      const snap = await getDoc(userRef);
+      if (snap.exists()) {
+        const data = snap.data();
+        document.body.classList.remove("admin", "user");
+        if (data.role === "admin") {
+          console.log("✅ Admin logged in");
+          document.body.classList.add("admin");
+        } else {
+          console.log("👤 Regular user");
+          document.body.classList.add("user");
+        }
+      }
+    } else {
+      if (emailEl) {
+        emailEl.textContent = "";
+        emailEl.classList.add("hidden");
+      }
+      if (loginLink) loginLink.classList.remove("hidden");
+      if (logoutBtn) logoutBtn.classList.add("hidden");
+      document.body.classList.remove("admin", "user");
     }
-    if (loginLink) loginLink.classList.add("hidden");
-    if (logoutBtn) logoutBtn.classList.remove("hidden");
-  } else {
-    // Logged out
-    if (emailEl) {
-      emailEl.textContent = "";
-      emailEl.classList.add("hidden");
-    }
-    if (loginLink) loginLink.classList.remove("hidden");
-    if (logoutBtn) logoutBtn.classList.add("hidden");
-  }
-});
+  });
 
-
-// Logout
-logoutBtn?.addEventListener("click", async () => {
-  await signOut(auth);
-  window.location.href = "index.html"; // redirect after logout
-});
-
-const loginPassword = document.getElementById("loginPassword");
+  // Show/hide password toggles
+  const loginPassword = document.getElementById("loginPassword");
   const toggleLoginPassword = document.getElementById("toggle-login-password");
 
   const regPassword = document.getElementById("regPassword");
@@ -162,16 +182,13 @@ const loginPassword = document.getElementById("loginPassword");
   const regConfirmPassword = document.getElementById("regConfirmPassword");
   const toggleRegConfirmPassword = document.getElementById("toggle-register-confirm");
 
-  toggleLoginPassword?.addEventListener("change", () => {
+  toggleLoginPassword?.addEventListener("click", () => {
     loginPassword.type = toggleLoginPassword.checked ? "text" : "password";
   });
-
-  toggleRegPassword?.addEventListener("change", () => {
-    regPassword.type = toggleRegPassword.checked ? "text" : "password";
-  });
-
-  toggleRegConfirmPassword?.addEventListener("change", () => {
-    regConfirmPassword.type = toggleRegConfirmPassword.checked ? "text" : "password";
-  });
-
+toggleRegPassword?.addEventListener("change", () => {
+  regPassword.type = toggleRegPassword.checked ? "text" : "password";
+});
+toggleRegConfirmPassword?.addEventListener("change", () => {
+  regConfirmPassword.type = toggleRegConfirmPassword.checked ? "text" : "password";
+});
 });

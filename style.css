@@ -3,6 +3,7 @@
   src: url(font/TTFirsNeueTrialRegular.ttf);
 }
 
+/* global css */
 body {
   font-family: 'font';
   margin: 0;
@@ -10,6 +11,28 @@ body {
 
 .hidden {
   display: none;
+}
+
+select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  background: #f8f8f8;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:hover {
+  border-color: #e91e63;
+}
+
+select:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 5px rgba(233, 30, 99, 0.3);
 }
 
 /* NAVBAR */
@@ -21,6 +44,10 @@ body {
   border-bottom: 3px solid #000;
 }
 
+.icon-btn.more-btn {
+  display: none;
+}
+
 .notification-wrapper {
   position: relative;
   display: inline-block;
@@ -28,14 +55,14 @@ body {
 
 .notification-dropdown {
   position: absolute;
-  top: 80px; /* sits below button */
+  top: 80px;
   right: 0;
   background: #2cb5b3;
   color: white;
   width: 250px;
   padding: 15px;
   border-radius: 10px;
-  display: none; /* hidden by default */
+  display: none;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -150,7 +177,7 @@ body {
 
 
 .search-container {
-  display: flex;
+  visibility: hidden;
   align-items: center;
   background-color: #e0f7f9;
   padding: 5px 10px;
@@ -175,7 +202,11 @@ body {
 
 .logo {
   height: 90px;
-  margin-left: 40px;
+  margin-left: 20px;
+}
+
+.icon-btn.more-btn {
+  display: none;
 }
 
 /* HOME CAROUSEL */
@@ -294,7 +325,7 @@ body {
   margin: 20px;
 }
 
-/* --- Left Carousel --- */
+/* Left Carousel */
 .featured-carousel {
   flex: 1;
   min-width: 350px;
@@ -378,7 +409,7 @@ body {
   color: deeppink;
 }
 
-/* --- Right Product Slideshow --- */
+/* Right Product Slideshow */
 .product-slideshow {
   flex: 1;
   min-width: 250px;
@@ -451,8 +482,6 @@ body {
 .product-dots .dot.active {
   opacity: 1;
 }
-
-/* --- NEW ARRIVALS --- */
 
 /* Section title */
 .promotion {
@@ -618,34 +647,8 @@ footer {
 
 /* RESPONSIVE STUFFS */
 
-@media (max-width: 600px) {
-  .footer-top,
-  .footer-bottom {
-    padding: 15px;
-  }
-
-  .footer-card,
-  .footer-section {
-    width: 100%;
-    padding: 15px;
-  }
-
-  .footer-section form input,
-  .footer-section form button {
-    width: 100%;
-  }
-}
-
-/* Tablet screen portrait mode */
-@media (max-width: 768px) {
-  .featured-section {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* Tablet screens landscape mode */
 @media (max-width: 1024px) {
+  
   .promo-grid {
     grid-template-columns: repeat(2, 1fr);
     padding-left: 180px;
@@ -676,20 +679,3 @@ footer {
   }
 }
 
-/* Mobile screens */
-@media (max-width: 600px) {
-  .promo-grid {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
-  .promo-card {
-    width: 100%;
-    max-width: 300px;
-  }
-
-  .promotion .section-title {
-    font-size: 1.2rem;
-    padding: 6px 15px;
-  }
-}

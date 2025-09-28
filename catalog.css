@@ -10,6 +10,37 @@ label {
   margin: 0 0 0 20px;
 }
 
+.category-select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 0.95rem;
+  width: 20%;
+}
+
+.catalog-search {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 0 20px 20px;
+}
+
+.catalog-search input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.catalog-search input:focus {
+  border-color: #e91e63;
+  box-shadow: 0 0 6px rgba(233, 30, 99, 0.3);
+}
+
+
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -62,3 +93,24 @@ label {
 .add-to-cart:hover {
   background: deeppink;
 }
+
+@media (max-width: 1024px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 30px;
+    gap: 20px;
+  }
+
+  .catalog-card {
+    width: 100%;       /* fill the grid column */
+    max-width: 400px;  /* allow bigger cards */
+    padding: 20px;     /* more breathing room */
+  }
+
+  .catalog-card img {
+    width: 100%;
+    max-height: 300px; /* optional: keep images reasonable */
+    object-fit: contain;
+  }
+}
+

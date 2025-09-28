@@ -99,10 +99,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Load catalog with selected category
-  loadCatalog(selectedCategory);
+  loadCatalog(selectedCategory).then(() => {
+    setupSearchFilter(); // ✅ setup search after catalog is loaded
+  });
 
   // Update catalog when dropdown changes
   categorySelect.addEventListener("change", (e) => {
-    loadCatalog(e.target.value);
+    loadCatalog(e.target.value).then(() => {
+      setupSearchFilter(); 
+    });
   });
 });
+
+// 🔎 Search filter logic
+function setupSearchFilter() {
+  const searchInput = document.getElementById("catalogSearch");
+  const catalogContainer = document.getElementById("catalog");
+
+  searchInput?.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const cards = catalogContainer.querySelectorAll(".catalog-card");
+
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  });
+}

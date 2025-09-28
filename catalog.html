@@ -11,6 +11,7 @@
   <!-- START OF NAVBAR -->
 <div class="navbar">
   <div class="left">
+  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
     <a href="bulletin.html">Bulletin</a>
     <a href="try.html">Try this</a>
     <a href="about.html">About Us</a>
@@ -46,7 +47,6 @@
     </div>
   </div>
 
-  <button class="icon-btn more-btn">⋯</button>
 </div>
 </div>
   <!-- END OF NAVBAR -->
@@ -54,9 +54,12 @@
   <!-- Catalog -->
   <h2 class="title">Our Products</h2>
 
+  <div class="catalog-search">
+  <input type="text" id="catalogSearch" placeholder="Search catalog...">
+</div>
   <div class="category-filter">
   <label for="category-select">Choose a category: </label>
-  <select id="category-select">
+  <select class="category-select" id="category-select">
     <option value="">All</option>
     <option value="Nori">Nori</option>
     <option value="Noodles">Noodles</option>

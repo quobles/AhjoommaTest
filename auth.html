@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login / Register - Ahjooma's K-Mart</title>
   <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -50,14 +51,20 @@
                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                title="Enter a valid email address">
         <input type="password" placeholder="Password" required
-               id="regPassword"
-               minlength="8"
-               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-               title="At least 8 characters, 1 uppercase, 1 lowercase, and 1 number">
-        <input type="password" placeholder="Confirm Password" required
-               id="regConfirmPassword">
-               <label class="show-password">
-  <input type="checkbox" id="toggle-login-password"> Show Password
+       id="regPassword"
+       minlength="8"
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+       title="At least 8 characters, 1 uppercase, 1 lowercase, and 1 number">
+
+<label class="show-password">
+  <input type="checkbox" id="toggle-register-password"> Show Password
+</label>
+
+<input type="password" placeholder="Confirm Password" required
+       id="regConfirmPassword">
+
+<label class="show-password">
+  <input type="checkbox" id="toggle-register-confirm"> Show Password
 </label>
         <div class="terms-container">
     <input type="checkbox" id="termsCheckbox">
@@ -91,7 +98,6 @@
 </div>
   </div>
 
-  <script type="module" src="db.js" defer></script>
   <script type="module" src="auth.js" defer></script>
 </body>
 </html>
