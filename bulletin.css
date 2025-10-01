@@ -244,3 +244,14 @@ body {
 .card button:hover {
   background: #ff5c88;
 }
+
+@media (max-width: 1024px) {
+  
+  .review-cards {
+    display: inline;
+  }
+
+  .review-card:hover {
+  transform: none;
+}
+}

@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// --- Firebase config ---
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyA5uPZtGvRC1VaqINKcVAWUWC9VyA1-b_s",
   authDomain: "ahjoommakmart.firebaseapp.com",
@@ -13,7 +13,7 @@ const firebaseConfig = {
   measurementId: "G-DNLHP8DS8Y"
 };
 
-// --- Init Firebase ---
+// init Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 

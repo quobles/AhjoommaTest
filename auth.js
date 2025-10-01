@@ -3,20 +3,20 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
-  signOut
+  signOut,
+  sendEmailVerification
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
 import {
   doc,
   setDoc,
   getDoc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 
-// Helpers
 function $(sel) { return document.querySelector(sel); }
 function show(el) { el?.classList.remove("hidden"); }
 function hide(el) { el?.classList.add("hidden"); }
 
-// Error mapping
 function friendlyAuthError(err) {
   const map = {
     "auth/email-already-in-use": "That email is already registered.",
@@ -72,24 +72,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const cred = await createUserWithEmailAndPassword(auth, email, pass);
+  const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
-      // Save extra info + role into Firestore
-      await setDoc(doc(db, "users", cred.user.uid), {
-        firstName,
-        lastName,
-        email,
-        role: "user" // default role
-      });
-
-      alert(`Welcome ${firstName}! Registration successful.`);
-      window.location.href = "index.html";
-    } catch (err) {
-      alert(friendlyAuthError(err));
-    }
+  // Save extra info + role into Firestore
+  await setDoc(doc(db, "users", cred.user.uid), {
+    firstName,
+    lastName,
+    email,
+    role: "user" // default role
   });
 
-  // Terms modal
+  // ✅ Send email verification
+  await sendEmailVerification(cred.user);
+
+  alert(`Welcome ${firstName}! A verification email has been sent to ${email}. Please verify before logging in.\nalso check spam/junk folder.`);
+  await signOut(auth); // force logout until they verify
+  window.location.href = "auth.html";
+} catch (err) {
+  alert(friendlyAuthError(err));
+}
+
+  });
+
+  // Terms and conditions modal
   const modal = document.getElementById("termsModal");
   const closeBtn = document.querySelector(".modal .close");
   const acceptBtn = document.getElementById("acceptTermsBtn");
@@ -119,12 +124,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const pass = $("#loginPassword").value;
 
     try {
-      await signInWithEmailAndPassword(auth, email, pass);
-      alert("Login successful!");
-      window.location.href = "index.html";
-    } catch (err) {
-      alert(friendlyAuthError(err));
-    }
+  const cred = await signInWithEmailAndPassword(auth, email, pass);
+
+  if (!cred.user.emailVerified) {
+    alert("Please verify your email before logging in. Check your inbox.\nalso check spam/junk folder.");
+    await sendEmailVerification(cred.user);
+    await signOut(auth);
+    return;
+  }
+
+  alert("Login successful!");
+  window.location.href = "index.html";
+} catch (err) {
+  alert(friendlyAuthError(err));
+}
+
   });
 
   // Logout
@@ -154,10 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = snap.data();
         document.body.classList.remove("admin", "user");
         if (data.role === "admin") {
-          console.log("✅ Admin logged in");
+          console.log("Admin logged in");
           document.body.classList.add("admin");
         } else {
-          console.log("👤 Regular user");
+          console.log("Regular user logged in");
           document.body.classList.add("user");
         }
       }

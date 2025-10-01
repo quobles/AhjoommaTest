@@ -8,11 +8,10 @@ import {
   setDoc,
   getDoc,
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
 async function loadCatalog(selectedCategory = "") {
   const catalogContainer = document.getElementById("catalog");
-  catalogContainer.innerHTML = "<p>Loading products...</p>";
+  catalogContainer.innerHTML = "<p>Loading products...</p>"; // loading products text
 
   try {
     let q = collection(db, "products");
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load catalog with selected category
   loadCatalog(selectedCategory).then(() => {
-    setupSearchFilter(); // ✅ setup search after catalog is loaded
+    setupSearchFilter();
   });
 
   // Update catalog when dropdown changes
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// 🔎 Search filter logic
+// Search filter logic
 function setupSearchFilter() {
   const searchInput = document.getElementById("catalogSearch");
   const catalogContainer = document.getElementById("catalog");

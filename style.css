@@ -44,8 +44,14 @@ select:focus {
   border-bottom: 3px solid #000;
 }
 
+/* hide more btn */
 .icon-btn.more-btn {
   display: none;
+}
+
+/* only shows to admin */
+.admin .icon-btn.more-btn {
+  display: block;
 }
 
 .notification-wrapper {
@@ -130,6 +136,48 @@ select:focus {
   background: #d32f2f;
 }
 
+.more-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.more-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #2cb5b3;
+  color: white;
+  width: 200px;
+  border-radius: 10px;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.more-dropdown ul {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+}
+
+.more-dropdown li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.more-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.more-dropdown li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.more-dropdown.show {
+  display: block;
+}
 
 .navbar .left,
 .navbar .right {
@@ -203,10 +251,6 @@ select:focus {
 .logo {
   height: 90px;
   margin-left: 20px;
-}
-
-.icon-btn.more-btn {
-  display: none;
 }
 
 /* HOME CAROUSEL */

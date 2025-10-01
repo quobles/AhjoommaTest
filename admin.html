@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+  <meta charset="UTF-8">
+  <title>Ahjoomma's K-Mart</title>
+</head>
+<body>
+
+<!-- START OF NAVBAR -->
+     <div class="navbar">
+  <div class="left">
+    <a href="bulletin.html">Bulletin</a>
+    <a href="try.html">Try this</a>
+    <a href="about.html">About Us</a>
+  </div>
+<div class="logo">
+  <a href="index.html" class="logo">
+    <img src="images/logoWhite.png" class="logo">
+  </a>
+  </div>
+  <div class="right">
+    <div class="search-container">
+      <button type="submit" class="search-button">🔍</button>
+      <input type="text" placeholder="Looking for something?" class="search-input">
+    </div>
+    <button class="icon-btn cart-btn">🛒</button>
+    <button class="icon-btn profile-btn">👤</button>
+    <div class="profile-wrapper">
+      <div class="profile-dropdown" id="profile-dropdown">
+        <p id="user-email" class="hidden">Not logged in</p>
+        <a href="auth.html" id="login-link">Login / Register</a>
+        <button class="hidden" id="logout-btn">Logout</button>
+      </div>
+    </div>
+    <div class="notification-wrapper">
+    <button class="icon-btn notification-btn">🔔</button>
+    <div class="notification-dropdown">
+      <h4>Notifications</h4>
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
+</div>
+</div>
+<!-- END OF NAVBAR -->
+
+
+<!-- ✅ Order Filter -->
+  <section class="orders-section">
+    <h2>Manage Orders</h2>
+    <div class="filter-bar">
+      <label for="order-filter">Filter Orders:</label>
+      <select id="order-filter">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="delivering">Delivery</option>
+      </select>
+    </div>
+
+    <div id="orders-container" class="orders-grid"></div>
+  </section>
+
+
+  <!-- Bottom row -->
+  <div class="footer-bottom">
+    <div class="footer-section address">
+      <h3>Address</h3>
+      <p><strong>#18 Hawaii Street, Camella Homes<br>
+         Salinas IV. Bacoor City, Cavite.</strong></p>
+      <a href="#">View maps here.</a>
+      <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p><strong>CEL NO:</strong> +639260934822</p>
+      <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
+      <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>BECOME PART OF US</h3>
+      <form>
+        <input type="email" placeholder="Email*" required>
+        <input type="text" placeholder="Contact No.">
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</footer>
+<!-- FOOTER END -->
+
+<script src="script.js" defer></script>
+<script type="module" src="auth.js" defer></script>
+<script type="module" src="admin.js" defer></script>
+<script type="module" src="notification.js" defer></script>
+
+</body>
+</html>
