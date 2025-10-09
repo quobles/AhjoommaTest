@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+    <meta charset="UTF-8">
+    <title>Profile - Ahjoomma’s K-Mart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <!-- START OF NAVBAR -->
+    <div class="navbar">
+        <div class="left">
+            <a href="bulletin.html">Bulletin</a>
+            <a href="try.html">Try this</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="images/logoWhite.png" class="logo">
+            </a>
+        </div>
+        <div class="right">
+            <div class="search-container">
+                <button type="submit" class="search-button">🔍</button>
+                <input type="text" placeholder="Looking for something?" class="search-input">
+            </div>
+            <button class="icon-btn cart-btn">🛒</button>
+            <button class="icon-btn profile-btn">👤</button>
+            <div class="profile-wrapper">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <p id="user-email" class="hidden">Not logged in</p>
+                    <a href="auth.html" id="login-link">Login / Register</a>
+                    <button class="hidden" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="notification-wrapper">
+                <button class="icon-btn notification-btn">🔔</button>
+                <div class="notification-dropdown">
+                    <h4>Notifications</h4>
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <button class="icon-btn more-btn" id="menu-toggle">☰</button>
+        </div>
+    </div>
+    <!-- END OF NAVBAR -->
+
+    <div class="profile-container">
+        <div class="sidebar">
+            <h2>My Profile</h2>
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="account">👤 My Account</a></li>
+                <li><a href="#" class="nav-link" data-section="orders">📦 My Orders</a></li>
+                <li><a href="#" class="nav-link" data-section="addresses">🏠 My Addresses</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <!-- Account Section -->
+            <div id="account" class="section active">
+                <h3>My Account</h3>
+                <form id="account-form">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Enter last name">
+                    </div>
+                    <button type="submit" class="btn">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Orders Section -->
+            <div id="orders" class="section">
+                <h3>My Orders</h3>
+
+                <div class="form-group">
+                    <label for="orderFilter">Filter Orders</label>
+                    <select id="orderFilter">
+                        <option value="all">All</option>
+                        <option value="pending">Ongoing</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="table-container">
+                    <table id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Product Name</th>
+                                <th>Status</th>
+                                <th>Total Price</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-body">
+                            <tr>
+                                <td colspan="4" class="no-data">Loading orders...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="order-summary" id="order-summary"></div>
+            </div>
+
+
+
+            <!-- Addresses Section -->
+            <div id="addresses" class="section hidden">
+                <h3>My Addresses</h3>
+                <div id="addresses-list">
+                    <p>Loading addresses...</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="newAddress" placeholder="Add new address">
+                    <button type="submit" class="btn" id="addAddressBtn">Add Address</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script type="module" src="profile.js" defer></script>
+    <script type="module" src="auth.js" defer></script>
+    <script type="module" src="notification.js" defer></script>
+
+
+
+</body>
+
+</html>

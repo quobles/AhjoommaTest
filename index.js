@@ -2,9 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize homepage carousels
   var mainCarousel = document.querySelector('.main-carousel');
   var featuredCarousel = document.querySelector('.featured-carousel');
+  var catalogTitle = document.querySelector('.catalog-title');
 
   if (mainCarousel) initCarousel(mainCarousel, true);
   if (featuredCarousel) initCarousel(featuredCarousel, true);
+
+  catalogTitle.addEventListener('click', function() {
+    window.location.href = 'catalog.html';
+  });
 
   // Initialize product slideshow
   initProductSlideshow();

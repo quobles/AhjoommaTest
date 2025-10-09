@@ -1,201 +1,208 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="bulletin.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Bulletin - Ahjooma's K-Mart</title>
-  </head>
-  <body>
 
-    <!-- START OF NAVBAR -->
-<div class="navbar">
-  <div class="left">
-    <a href="bulletin.html">Bulletin</a>
-    <a href="try.html">Try this</a>
-    <a href="about.html">About Us</a>
-  </div>
-<div class="logo">
-  <a href="index.html" class="logo">
-    <img src="images/logoWhite.png" class="logo">
-  </a>
-  </div>
-  <div class="right">
-    <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-      <input type="text" placeholder="Looking for something?" class="search-input">
+<head>
+  <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="bulletin.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Bulletin - Ahjooma's K-Mart</title>
+</head>
+
+<body>
+
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
     </div>
-    <button class="icon-btn cart-btn">🛒</button>
-    <button class="icon-btn profile-btn">👤</button>
-    <div class="profile-wrapper">
-      <div class="profile-dropdown" id="profile-dropdown">
-        <p id="user-email" class="hidden">Not logged in</p>
-        <a href="auth.html" id="login-link">Login / Register</a>
-        <button class="hidden" id="logout-btn">Logout</button>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
+      </div>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email" class="hidden">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn" id="menu-toggle">☰</button>
+    </div>
+  </div>
+  <!-- END OF NAVBAR -->
+
+  <!-- PROMO BANNER -->
+  <div class="promo-banner">
+    <marquee>Welcome to Ahjoomma’s KMart! Your One-stop Korean Grocery Store, Your friendly Ahjoomma!</marquee>
+  </div>
+
+  <div class="bulletin-container">
+    <!-- Left Column -->
+    <div class="left-column">
+      <div class="card promotion-card">
+        <h3>Promo Code</h3>
+        <input type="text" id="promoCode" placeholder="Insert Code"><br>
+        <button onclick="applyPromo()">Apply</button>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="card">
+        <h3>Terms and Conditions</h3>
+        <p> This will acts as a contract between the website owner and users,
+          outlining the rules of using the site and protecting the business from
+          potential legal issues. T&Cs help establish clear expectations for users,
+          prevent abuse, protect intellectual property, and limit liability. </p>
+        <a href="policies.html">View here</a>
+      </div>
+
+      <!-- FAQs -->
+      <div class="card faqs">
+        <h3>FAQs</h3>
+        <button class="faq-btn" data-modal="faq1">What are your Store Hours?</button><br>
+        <button class="faq-btn" data-modal="faq2">Do you have parking space?</button><br>
+        <button class="faq-btn" data-modal="faq3">What can we expect in store?</button><br>
+        <button class="faq-btn" data-modal="faq4">Can we franchise?</button><br>
+        <a href="faq.html">View more</a>
+      </div>
+
+      <!-- FAQ Modals -->
+      <div id="faq1" class="faq-modal">
+        <div class="faq-modal-content">
+          <span class="faq-close">&times;</span>
+          <h3>Store hours</h3>
+          <p>We are open daily from 10:00 AM to 9:00 PM.</p>
+        </div>
+      </div>
+
+      <div id="faq2" class="faq-modal">
+        <div class="faq-modal-content">
+          <span class="faq-close">&times;</span>
+          <h3>Do you have parking space?</h3>
+          <p>Yes, we have a designated parking area for our customers.</p>
+        </div>
+      </div>
+
+      <div id="faq3" class="faq-modal">
+        <div class="faq-modal-content">
+          <span class="faq-close">&times;</span>
+          <h3>What can we expect in the store?</h3>
+          <p>Our store offers exclusive promos, quality products, and a great shopping experience.</p>
+        </div>
+      </div>
+
+      <div id="faq4" class="faq-modal">
+        <div class="faq-modal-content">
+          <span class="faq-close">&times;</span>
+          <h3>Can we franchise?</h3>
+          <p>Yes, franchise opportunities are available. Please contact our team for more details.</p>
+        </div>
       </div>
     </div>
-    <div class="notification-wrapper">
-    <button class="icon-btn notification-btn">🔔</button>
-    <div class="notification-dropdown">
-      <h4>Notifications</h4>
-      <ul>
-      </ul>
-    </div>
-  </div>
-  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
-</div>
-</div>
-    <!-- END OF NAVBAR -->
 
-    <!-- PROMO BANNER -->
-    <div class="promo-banner">
-      <marquee>Promo message here. Insert promo message here. Ahjooma's K-Mart</marquee>
-    </div>
-
-    <div class="bulletin-container">
-  <!-- Left Column -->
-  <div class="left-column">
-    <div class="card promotion-card">
-      <h3>Promo Code</h3>
-      <input type="text" id="promoCode" placeholder="Insert Code"><br>
-      <button onclick="applyPromo()">Apply</button>
-    </div>
-
-    <!-- Terms and Conditions -->
-    <div class="card">
-      <h3>Terms and Conditions</h3>
-      <p> This will acts as a contract between the website owner and users,
-        outlining the rules of using the site and protecting the business from
-        potential legal issues. T&Cs help establish clear expectations for users,
-        prevent abuse, protect intellectual property, and limit liability. </p>
-      <a href="#" onclick="openModal('termsModal')">View here</a>
-    </div>
-
-    <!-- FAQs -->
-    <div class="card faqs">
-      <h3>FAQs</h3>
-      <button class="faq-btn" data-modal="faq1">What are your Store Hours?</button><br>
-      <button class="faq-btn" data-modal="faq2">Do you have parking space?</button><br>
-      <button class="faq-btn" data-modal="faq3">What can we expect in store?</button><br>
-      <button class="faq-btn" data-modal="faq4">Can we franchise?</button><br>
-
-    </div>
-    
-    <!-- FAQ Modals -->
-<div id="faq1" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Store hours</h3>
-    <p>We are open daily from 10:00 AM to 9:00 PM.</p>
-  </div>
-</div>
-
-<div id="faq2" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Do you have parking space?</h3>
-    <p>Yes, we have a designated parking area for our customers.</p>
-  </div>
-</div>
-
-<div id="faq3" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>What can we expect in the store?</h3>
-    <p>Our store offers exclusive promos, quality products, and a great shopping experience.</p>
-  </div>
-</div>
-
-<div id="faq4" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h3>Can we franchise?</h3>
-    <p>Yes, franchise opportunities are available. Please contact our team for more details.</p>
-  </div>
-</div>
-  </div>
-
-  <!-- Right Column -->
-  <div class="right-column">
-    <div class="card video-card">
-      <iframe
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen>
-            </iframe>
-    </div>
-  </div>
-</div>
-
-<!-- Customer Feedback Section -->
-<section class="feedback-section">
-  <h2>CUSTOMERS FEEDBACK</h2>
-  <div class="stars">⭐⭐⭐⭐⭐</div>
-
-  <!-- Previous Customer Reviews -->
-  <div class="review-cards">
-    <div class="review-card">
-      <h3>Love A.</h3>
-      <p>"Best k-mart with the best prices and the best experience I had so far with all the Korean marts I've been in. Will come back soon and start going there more often."</p>
-    </div>
-    <div class="review-card">
-      <h3>Jocelyn Puntero</h3>
-      <p>"Our go to Korean store. They have complete Korean goodies that you'll surely love. Friendly staff, clean store and they also have convenient online shopping."</p>
-    </div>
-    <div class="review-card">
-      <h3>Christine Peradilla</h3>
-      <p>"Always had fun visiting this K-mart. Glad that they have good kimchi and all that I need like black sesame seeds, furikake and gochugaru in small packaging."</p>
+    <!-- Right Column -->
+    <div class="right-column">
+      <div class="card video-card">
+        <iframe src="https://drive.google.com/file/d/1DgHLPvhjfehpU3O909_8hmJkhIztQqci/preview" frameborder="0"
+          allowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
 
-  <!-- Submit New Feedback -->
-  <div class="feedback-form">
-    <h2>WE'D LIKE TO HEAR FROM YOU</h2>
-    <p>What do you think?</p>
-    <form>
-      <input type="text" placeholder="Name (optional)">
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="How can we improve?" rows="4" required></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
-</section>
+  <!-- Customer Feedback Section -->
+  <section class="feedback-section">
+    <h2>CUSTOMERS FEEDBACK</h2>
+    <div class="stars">⭐⭐⭐⭐⭐</div>
 
-<!-- FOOTER START -->
-<footer>
-  <!-- Bottom row -->
-  <div class="footer-bottom">
-    <div class="footer-section address">
-      <h3>Address</h3>
-      <p><strong>#18 Hawaii Street, Camella Homes<br>
-         Salinas IV. Bacoor City, Cavite.</strong></p>
-      <a href="about.html#map">View maps here.</a>
-      <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+    <!-- Previous Customer Reviews -->
+    <div class="review-cards">
+      <div class="review-card">
+        <h3>Love A.</h3>
+        <p>"Best k-mart with the best prices and the best experience I had so far with all the Korean marts I've been
+          in. Will come back soon and start going there more often."</p>
+      </div>
+      <div class="review-card">
+        <h3>Jocelyn Puntero</h3>
+        <p>"Our go to Korean store. They have complete Korean goodies that you'll surely love. Friendly staff, clean
+          store and they also have convenient online shopping."</p>
+      </div>
+      <div class="review-card">
+        <h3>Christine Peradilla</h3>
+        <p>"Always had fun visiting this K-mart. Glad that they have good kimchi and all that I need like black sesame
+          seeds, furikake and gochugaru in small packaging."</p>
+      </div>
     </div>
 
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <p><strong>CEL NO:</strong> +639260934822</p>
-      <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
-      <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>BECOME PART OF US</h3>
+    <!-- Submit New Feedback -->
+    <div class="feedback-form">
+      <h2>WE'D LIKE TO HEAR FROM YOU</h2>
+      <p>What do you think?</p>
       <form>
-        <input type="email" placeholder="Email*" required>
-        <input type="text" placeholder="Contact No.">
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Register</button>
+        <input type="text" placeholder="Name (optional)">
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="How can we improve?" rows="4" required></textarea>
+        <button type="submit">Submit</button>
       </form>
     </div>
-  </div>
-</footer>
-<!-- FOOTER END -->
+  </section>
 
-    <script src="script.js" defer></script>
-    <script src="bulletin.js" defer></script>
-    <script type="module" src="auth.js" defer></script>
-<script type="module" src="notification.js" defer></script>
+  <!-- FOOTER START -->
+  <footer>
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+      <div class="footer-section address">
+        <h3>Address</h3>
+        <p><strong>#18 Hawaii Street, Camella Homes<br>
+            Salinas IV. Bacoor City, Cavite.</strong></p>
+        <a href="about.html#map">View maps here.</a>
+        <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+      </div>
 
-  </body>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><strong>CEL NO:</strong> +639260934822</p>
+        <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
+        <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>BECOME PART OF US</h3>
+        <form>
+          <input type="email" placeholder="Email*" required>
+          <input type="text" placeholder="Contact No.">
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER END -->
+
+  <script src="script.js" defer></script>
+  <script src="bulletin.js" defer></script>
+  <script type="module" src="feedback.js" defer></script>
+  <script type="module" src="auth.js" defer></script>
+  <script type="module" src="notification.js" defer></script>
+
+</body>
+
 </html>

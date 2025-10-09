@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="faq.css">
+    <meta charset="UTF-8">
+    <title>Ahjoomma's K-Mart</title>
+</head>
+
+<body>
+
+    <!-- START OF NAVBAR -->
+    <div class="navbar">
+        <div class="left">
+            <a href="bulletin.html">Bulletin</a>
+            <a href="try.html">Try this</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="images/logoWhite.png" class="logo">
+            </a>
+        </div>
+        <div class="right">
+            <div class="search-container">
+                <button type="submit" class="search-button">🔍</button>
+                <input type="text" placeholder="Looking for something?" class="search-input">
+            </div>
+            <button class="icon-btn cart-btn">🛒</button>
+            <button class="icon-btn profile-btn">👤</button>
+            <div class="profile-wrapper">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <p id="user-email" class="hidden">Not logged in</p>
+                    <a href="auth.html" id="login-link">Login / Register</a>
+                    <button class="hidden" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="notification-wrapper">
+                <button class="icon-btn notification-btn">🔔</button>
+                <div class="notification-dropdown">
+                    <h4>Notifications</h4>
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <button class="icon-btn more-btn" id="menu-toggle">☰</button>
+        </div>
+    </div>
+    <!-- END OF NAVBAR -->
+
+    <div class="faq-container">
+        <h1>❓ Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <button class="faq-question">Do you sell samgyupsal meats?</button>
+            <div class="faq-answer">
+                <p>Yes we do. Pork and beef variants only.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Can I modify or cancel my order after placing it?</button>
+            <div class="faq-answer">
+                <p>You can modify or cancel your order only if it has not yet been processed for delivery. Please call
+                    us immediately at +639260934822 or check the bottom part of our website for contact information. We
+                    cannot guarantee changes once the order is being prepared.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Are the prices online the same as in-store?</button>
+            <div class="faq-answer">
+                <p>The price of the product is the same online as in-store. However, if you order online, a minimal
+                    delivery charge will be added to your total bill.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What payment methods do you accept?</button>
+            <div class="faq-answer">
+                <p>For now, we only accept GCASH, QRPh, and PayMaya – QR.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Can I schedule a delivery for a specific time?</button>
+            <div class="faq-answer">
+                <p>Yes! During checkout, you can select a preferred delivery time slot based on availability. We also
+                    offer contactless delivery upon request.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How do you ensure the freshness of perishable items like kimchi and
+                meat?</button>
+            <div class="faq-answer">
+                <p>We take great pride in our freshness. Our team carefully picks the highest quality items, and we use
+                    specialized insulated bags with ice packs for all perishable goods to maintain the cold chain during
+                    delivery.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">What if I receive a damaged or incorrect item?</button>
+            <div class="faq-answer">
+                <p>We are sorry for the inconvenience! Please contact us within 2 hours of delivery with a photo of the
+                    item and your order number. We will issue a refund or credit for the faulty or missing item. See our
+                    full Refund Policy for details.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How can I provide feedback on your service?</button>
+            <div class="faq-answer">
+                <p>We love hearing from our customers! You can leave a product review on the item's page or send general
+                    feedback through our "Bulletin" page. Your feedback helps us improve.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+        <div class="footer-section address">
+            <h3>Address</h3>
+            <p><strong>#18 Hawaii Street, Camella Homes<br>
+                    Salinas IV. Bacoor City, Cavite.</strong></p>
+        <a href="about.html#map">View maps here.</a>
+            <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p><strong>CEL NO:</strong> +639260934822</p>
+            <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
+            <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>BECOME PART OF US</h3>
+            <form>
+                <input type="email" placeholder="Email*" required>
+                <input type="text" placeholder="Contact No.">
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    </footer>
+    <!-- FOOTER END -->
+
+    <script src="script.js" defer></script>
+    <script type="module" src="auth.js" defer></script>
+    <script type="module" src="faq.js" defer></script>
+    <script type="module" src="notification.js" defer></script>
+
+</body>
+
+</html>

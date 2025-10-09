@@ -1,14 +1,8 @@
-@font-face {
-  font-family: 'font';
-  src: url(font/TTFirsNeueTrialRegular.ttf);
-}
-
 body {
   font-family: 'font';
   margin: 0;
 }
 
-/* PROMO BANNER */
 .promo-banner {
   background: hotpink;
   border-radius: 5px;
@@ -20,7 +14,6 @@ body {
   text-align: center;
 }
 
-/* Two-column layout */
 .bulletin-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -33,7 +26,6 @@ body {
   border-bottom: 2px solid #000;
 }
 
-/* Apply to all cards */
 .card {
   background: #fcb6c9;
   border-radius: 20px;
@@ -78,7 +70,7 @@ body {
   margin: 3px;
 }
 
-.modal {
+.faq-modal {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -91,17 +83,17 @@ body {
   overflow-y: auto;
 }
 
-.modal-content {
+.faq-modal-content {
   background: #fcb6c9;
   margin: 10% auto;
   padding: 20px;
   border-radius: 15px;
-  width: 90%;           /* shrink for mobile */
-  max-width: 500px;     /* limit for desktop */
+  width: 90%;
+  max-width: 500px;
   text-align: left;
 }
 
-.close {
+.faq-close {
   float: right;
   font-size: 24px;
   cursor: pointer;

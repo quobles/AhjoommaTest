@@ -72,25 +72,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-  const cred = await createUserWithEmailAndPassword(auth, email, pass);
+      const cred = await createUserWithEmailAndPassword(auth, email, pass);
 
-  // Save extra info + role into Firestore
-  await setDoc(doc(db, "users", cred.user.uid), {
-    firstName,
-    lastName,
-    email,
-    role: "user" // default role
-  });
+      // Save extra info + role into Firestore
+      await setDoc(doc(db, "users", cred.user.uid), {
+        firstName,
+        lastName,
+        email,
+        role: "user" // default role
+      });
 
-  // ✅ Send email verification
-  await sendEmailVerification(cred.user);
+      // ✅ Send email verification
+      await sendEmailVerification(cred.user);
 
-  alert(`Welcome ${firstName}! A verification email has been sent to ${email}. Please verify before logging in.\nalso check spam/junk folder.`);
-  await signOut(auth); // force logout until they verify
-  window.location.href = "auth.html";
-} catch (err) {
-  alert(friendlyAuthError(err));
-}
+      alert(`Welcome ${firstName}! A verification email has been sent to ${email}. Please verify before logging in.\nalso check spam/junk folder.`);
+      await signOut(auth); // force logout until they verify
+      window.location.href = "auth.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
 
   });
 
@@ -100,6 +100,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const acceptBtn = document.getElementById("acceptTermsBtn");
 
   $("#termsLabel")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "block";
+  });
+
+  $("#termsCheckbox")?.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "block";
   });
@@ -124,27 +129,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const pass = $("#loginPassword").value;
 
     try {
-  const cred = await signInWithEmailAndPassword(auth, email, pass);
+      const cred = await signInWithEmailAndPassword(auth, email, pass);
 
-  if (!cred.user.emailVerified) {
-    alert("Please verify your email before logging in. Check your inbox.\nalso check spam/junk folder.");
-    await sendEmailVerification(cred.user);
-    await signOut(auth);
-    return;
-  }
+      if (!cred.user.emailVerified) {
+        alert("Please verify your email before logging in. Check your inbox.\nalso check spam/junk folder.");
+        await sendEmailVerification(cred.user);
+        await signOut(auth);
+        return;
+      }
 
-  alert("Login successful!");
-  window.location.href = "index.html";
-} catch (err) {
-  alert(friendlyAuthError(err));
-}
+      alert("Login successful!");
+      window.location.href = "index.html";
+    } catch (err) {
+      alert(friendlyAuthError(err));
+    }
 
   });
 
   // Logout
   logoutBtn?.addEventListener("click", async () => {
     await signOut(auth);
-    window.location.href = "index.html"; // redirect after logout
+    window.location.href = "index.html";
   });
 
   // Track state + check role
@@ -199,10 +204,10 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleLoginPassword?.addEventListener("click", () => {
     loginPassword.type = toggleLoginPassword.checked ? "text" : "password";
   });
-toggleRegPassword?.addEventListener("change", () => {
-  regPassword.type = toggleRegPassword.checked ? "text" : "password";
-});
-toggleRegConfirmPassword?.addEventListener("change", () => {
-  regConfirmPassword.type = toggleRegConfirmPassword.checked ? "text" : "password";
-});
+  toggleRegPassword?.addEventListener("change", () => {
+    regPassword.type = toggleRegPassword.checked ? "text" : "password";
+  });
+  toggleRegConfirmPassword?.addEventListener("change", () => {
+    regConfirmPassword.type = toggleRegConfirmPassword.checked ? "text" : "password";
+  });
 });

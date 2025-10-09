@@ -10,16 +10,19 @@ if (moreBtn) {
   moreBtn.parentNode.insertBefore(wrapper, moreBtn);
   wrapper.appendChild(moreBtn);
 
-  // Create dropdown
-  const dropdown = document.createElement("div");
-  dropdown.classList.add("more-dropdown");
-  dropdown.innerHTML = `
-    <ul>
-      <li><a href="admin.html">📦 Manage Orders</a></li>
-      <li><a href="sales-report.html">📊 Sales Report</a></li>
-    </ul>
-  `;
-  wrapper.appendChild(dropdown);
+ // Create dropdown
+const dropdown = document.createElement("div");
+dropdown.classList.add("more-dropdown");
+dropdown.innerHTML = `
+  <ul>
+    <li><a href="admin.html">📦 Manage Orders</a></li>
+    <li><a href="inventory.html">📋 Inventory</a></li>
+    <li><a href="sales.html">📊 Inventory Report</a></li>
+    <li><a href="accounts.html">👥 User/Role Management</a></li>
+  </ul>
+`;
+wrapper.appendChild(dropdown);
+
 
   // Toggle dropdown on click
   moreBtn.addEventListener("click", (e) => {
@@ -39,12 +42,20 @@ if (moreBtn) {
   // Profile dropdown toggle
   const profileBtn = document.querySelector(".profile-btn");
   const profileDropdown = document.querySelector(".profile-dropdown");
+  const email = document.querySelector("#user-email");
 
   if (profileBtn && profileDropdown) {
     profileBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       profileDropdown.classList.toggle("show");
     });
+
+    if (email) {
+      email.addEventListener("click", (e) => {
+        e.stopPropagation();
+        window.location.href = "profile.html";
+      });
+    }
 
     // Close dropdown 
     document.addEventListener("click", (e) => {

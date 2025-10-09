@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+    <meta charset="UTF-8">
+    <title>Inventory Report - Ahjoomma’s K-Mart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sales.css">
+</head>
+
+<body>
+    <!-- START OF NAVBAR -->
+    <div class="navbar">
+        <div class="left">
+            <a href="bulletin.html">Bulletin</a>
+            <a href="try.html">Try this</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <div class="logo">
+            <a href="index.html" class="logo">
+                <img src="images/logoWhite.png" class="logo">
+            </a>
+        </div>
+        <div class="right">
+            <div class="search-container">
+                <button type="submit" class="search-button">🔍</button>
+                <input type="text" placeholder="Looking for something?" class="search-input">
+            </div>
+            <button class="icon-btn cart-btn">🛒</button>
+            <button class="icon-btn profile-btn">👤</button>
+            <div class="profile-wrapper">
+                <div class="profile-dropdown" id="profile-dropdown">
+                    <p id="user-email" class="hidden">Not logged in</p>
+                    <a href="auth.html" id="login-link">Login / Register</a>
+                    <button class="hidden" id="logout-btn">Logout</button>
+                </div>
+            </div>
+            <div class="notification-wrapper">
+                <button class="icon-btn notification-btn">🔔</button>
+                <div class="notification-dropdown">
+                    <h4>Notifications</h4>
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+            <button class="icon-btn more-btn" id="menu-toggle">☰</button>
+        </div>
+    </div>
+    <!-- END OF NAVBAR -->
+
+    <div class="sales-report-section">
+    <h1>Inventory Report</h1>
+
+    <div class="filter-bar">
+      <label for="report-date">Select Date:</label>
+      <input type="date" id="report-date" />
+      <button id="load-report">Load Report</button>
+    </div>
+
+    <div class="table-container">
+  <table id="sales-table">
+  <thead>
+    <tr>
+      <th class="sortable" data-key="productName">Product Name</th>
+      <th>Stock Change</th>
+      <th class="sortable" data-key="quantity">Quantity</th>
+      <th class="sortable" data-key="price">Price</th>
+      <th class="sortable" data-key="totalPrice">Total Price</th>
+    </tr>
+  </thead>
+  <tbody id="sales-body"></tbody>
+</table>
+
+  <div id="sales-summary" class="sales-summary">
+    <!-- Total sales for the day will show here -->
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+    <script src="script.js" defer></script>
+    <script type="module" src="auth.js" defer></script>
+    <script type="module" src="sales.js"></script>
+    <script type="module" src="notification.js" defer></script>
+
+
+
+</body>
+
+</html>

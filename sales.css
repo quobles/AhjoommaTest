@@ -1,0 +1,135 @@
+/* Sales Report Layout */
+.sales-report-section {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  color: #d6336c;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Filter Bar (Date Picker + Button) */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-bar input,
+.filter-bar button {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.filter-bar button {
+  background-color: #d6336c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.filter-bar button:hover {
+  background-color: #b82e5f;
+}
+
+/* Table Styling */
+.table-container {
+  padding: 20px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+th {
+  background-color: #f8d7da;
+  color: #a00d3c;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+th:hover {
+  background-color: #f3c0c6;
+}
+
+tr:hover {
+  background-color: #fff0f3;
+}
+
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+/* Sortable Columns */
+.sortable {
+  position: relative;
+}
+
+.sortable::after {
+  content: " ⬍";
+  font-size: 0.8rem;
+  color: #a00d3c;
+}
+
+/* Sales Summary / Daily Total */
+.sales-summary {
+  margin-top: 25px;
+  padding: 20px;
+  text-align: right;
+  background: #ffe6ec;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #a00d3c;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sales-summary span {
+  background-color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #d6336c;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+  th, td {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sales-summary {
+    text-align: center;
+    font-size: 1rem;
+  }
+}

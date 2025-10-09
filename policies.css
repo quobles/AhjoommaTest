@@ -1,0 +1,55 @@
+.policies-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.policies-container h1 {
+  text-align: center;
+  color: #e91e63;
+  margin-bottom: 25px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #e91e63;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.tab-btn.active {
+  background: #e91e63;
+  color: #fff;
+}
+
+.tab-content {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.tab-pane h2 {
+  color: #e91e63;
+  margin-bottom: 10px;
+}

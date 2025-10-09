@@ -1,142 +1,209 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="try.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Try This - Ahjooma's K-Mart</title>
-  </head>
-  <body>
-    
-    <!-- START OF NAVBAR -->
-     <div class="navbar">
-  <div class="left">
-    <a href="bulletin.html">Bulletin</a>
-    <a href="try.html">Try this</a>
-    <a href="about.html">About Us</a>
-  </div>
-<div class="logo">
-  <a href="index.html" class="logo">
-    <img src="images/logoWhite.png" class="logo">
-  </a>
-  </div>
-  <div class="right">
-    <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-      <input type="text" placeholder="Looking for something?" class="search-input">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="try.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Try This - Ahjooma's K-Mart</title>
+</head>
+
+<body>
+
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
     </div>
-    <button class="icon-btn cart-btn">🛒</button>
-    <button class="icon-btn profile-btn">👤</button>
-    <div class="profile-wrapper">
-      <div class="profile-dropdown" id="profile-dropdown">
-        <p id="user-email" class="hidden">Not logged in</p>
-        <a href="auth.html" id="login-link">Login / Register</a>
-        <button class="hidden" id="logout-btn">Logout</button>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
       </div>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email" class="hidden">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn" id="menu-toggle">☰</button>
     </div>
-    <div class="notification-wrapper">
-    <button class="icon-btn notification-btn">🔔</button>
-    <div class="notification-dropdown">
-      <h4>Notifications</h4>
+  </div>
+  <!-- END OF NAVBAR -->
+
+  <section class="try-this-section">
+    <h2>Try these recipes next!</h2>
+    <div class="try-this-container">
+
+      <div class="try-this-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/5ihFB4ZCnFY?si=HdTiduOLSle1mUcb"></iframe>
+        </div>
+        <h3>Rosé Cooks Kimchi Fried Rice Dinner</h3>
+        <a href="#popup1" class="view-ingredients-btn">View ingredients</a>
+      </div>
+
+      <div class="try-this-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/p8NNHgopz5A"></iframe>
+        </div>
+        <h3>trying VIRAL Korean instant ramen recipes</h3>
+        <a href="#popup2" class="view-ingredients-btn">View ingredients</a>
+      </div>
+
+      <div class="try-this-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/ep7YtrgYZ1Y"></iframe>
+        </div>
+        <h3>Best instant ramen ever!</h3>
+        <a href="#popup3" class="view-ingredients-btn">View ingredients</a>
+      </div>
+
+      <div class="try-this-card">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/9cfefUX3XPw"></iframe>
+        </div>
+        <h3>Level up your instant ramen 🍜</h3>
+        <a href="#popup4" class="view-ingredients-btn">View ingredients</a>
+      </div>
+
+    </div>
+
+    <p class="try-this-description">
+      This part of our website highlights a feature
+      where you can easily explore and follow new and
+      existing Korean recipes to level up the taste of your cravings.
+      Each video is linked directly to an application for
+      quick access, providing a fun and interactive way to
+      learn how to cook various dishes. By clicking the video links,
+      users can watch and refer to these fun tutorials anytime they
+      want to try something new in the kitchen. Each video also
+      includes a "View Ingredients here" link, ensuring customers
+      have everything they need before they start cooking.
+      This section makes it easy for our customers to stay
+      inspired and motivated to try out different recipes at
+      their convenience.
+    </p>
+  </section>
+
+  <!-- INGREDIENT POPUPS -->
+  <div id="popup1" class="popup">
+    <div class="popup-box">
+      <a href="#" class="popup-close">&times;</a>
+      <h2>Kimchi Fried Rice Ingredients</h2>
+      <h4><strong>Ingredients: (fast forward to 4:20 for exact procedure)</strong></h4>
       <ul>
+        <li>Kimchi</li>
+        <li>Spam</li>
+        <li>Gochujang *Chili Paste</li>
+        <li>Oil</li>
       </ul>
     </div>
   </div>
-  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
-</div>
-</div>
-    <!-- END OF NAVBAR -->
 
-    <section class="try-this-section">
-  <h2>Try these recipes next!</h2>
-  <div class="try-this-container">
-
-    <div class="try-this-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/d7xMgJedN2s?si=s22h5EvMdWcbwtUR"></iframe>
-      </div>
-      <h3>Video 1</h3>
-      <a href="#">View ingredients here</a>
-    </div>
-
-    <div class="try-this-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/GIVrMF3P8bM?si=E_-qPvfuuKFwSzXz"></iframe>
-      </div>
-      <h3>Video 2</h3>
-      <a href="#">View ingredients here</a>
-    </div>
-
-    <div class="try-this-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/Azj_CigzXiA?si=EbPzG3oayLGi8LGp"></iframe>
-      </div>
-      <h3>Video 3</h3>
-      <a href="#">View ingredients here</a>
-    </div>
-
-    <div class="try-this-card">
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/g1oCpoo4Pfo?si=x2i6f-nJRLCdv_w3"></iframe>
-      </div>
-      <h3>Video 4</h3>
-      <a href="#">View ingredients here</a>
-    </div>
-
-  </div>
-
-  <p class="try-this-description">
-    This part of our website highlights a feature
-    where you can easily explore and follow new and
-    existing Korean recipes to level up the taste of your cravings.
-    Each video is linked directly to an application for
-    quick access, providing a fun and interactive way to
-    learn how to cook various dishes. By clicking the video links,
-    users can watch and refer to these fun tutorials anytime they
-    want to try something new in the kitchen. Each video also
-    includes a "View Ingredients here" link, ensuring customers
-    have everything they need before they start cooking.
-    This section makes it easy for our customers to stay
-    inspired and motivated to try out different recipes at
-    their convenience.
-  </p>
-</section>
-
-<!-- FOOTER START -->
-<footer>
-  <!-- Bottom row -->
-  <div class="footer-bottom">
-    <div class="footer-section address">
-      <h3>Address</h3>
-      <p><strong>#18 Hawaii Street, Camella Homes<br>
-         Salinas IV. Bacoor City, Cavite.</strong></p>
-      <a href="#">View maps here.</a>
-      <p><strong>ahjoommaskmart (online korean mart)</strong></p>
-    </div>
-
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <p><strong>CEL NO:</strong> +639260934822</p>
-      <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
-      <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>BECOME PART OF US</h3>
-      <form>
-        <input type="email" placeholder="Email*" required>
-        <input type="text" placeholder="Contact No.">
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Register</button>
-      </form>
+  <div id="popup2" class="popup">
+    <div class="popup-box">
+      <a href="#" class="popup-close">&times;</a>
+      <h2>Viral Ramen Ingredients</h2>
+      <ul>
+        <li>Shin Ramyun</li>
+        <li>Egg</li>
+        <li>Sliced Cheese</li>
+      </ul>
     </div>
   </div>
-</footer>
-<!-- FOOTER END -->
-    <script src="script.js" defer></script>
-    <script type="module" src="auth.js" defer></script>
-<script type="module" src="notification.js" defer></script>
 
-  </body>
+  <div id="popup3" class="popup">
+    <div class="popup-box">
+      <a href="#" class="popup-close">&times;</a>
+      <h2>Cheesy Samgyup Hack Ingredients</h2>
+      <ul>
+        <li>Marinated Meat</li>
+        <li>Samyang Buldak</li>
+        <li>Cheese Sauce</li>
+        <li>Roasted Seaweeds</li>
+        <li>Egg</li>
+        <li>Nori</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="popup4" class="popup">
+    <div class="popup-box">
+      <a href="#" class="popup-close">&times;</a>
+      <h2>Level Up Ramen Ingredients</h2>
+      <ul>
+        <li>Samyang Buldak</li>
+        <li>Kewpie Mayo</li>
+        <li>Egg</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER START -->
+  <footer>
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+      <div class="footer-section address">
+        <h3>Address</h3>
+        <p><strong>#18 Hawaii Street, Camella Homes<br>
+            Salinas IV. Bacoor City, Cavite.</strong></p>
+        <a href="about.html#map">View maps here.</a>
+        <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><strong>CEL NO:</strong> +639260934822</p>
+        <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
+        <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>BECOME PART OF US</h3>
+        <form>
+          <input type="email" placeholder="Email*" required>
+          <input type="text" placeholder="Contact No.">
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+  <!-- FOOTER END -->
+  <script src="script.js" defer></script>
+  <script type="module" src="auth.js" defer></script>
+  <script type="module" src="notification.js" defer></script>
+
+  <script>
+    document.addEventListener("click", function (e) {
+      const openPopup = document.querySelector(".popup:target");
+      if (openPopup && !openPopup.querySelector(".popup-box").contains(e.target)) {
+        // Clicking outside the popup box closes it
+        window.location.hash = "";
+      }
+    });
+  </script>
+
+</body>
+
 </html>

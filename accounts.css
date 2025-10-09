@@ -1,0 +1,84 @@
+.user-management-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.user-management-container h1 {
+  color: #c2185b;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.create-user-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.create-container {
+    border-bottom: 2px solid black;
+}
+
+.create-user-form input,
+.create-user-form select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  flex: 1 1 180px;
+}
+
+.create-user-form button {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.create-user-form button:hover {
+  background: #c2185b;
+}
+
+input.user-search {
+  width: 90%;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.user-table th, .user-table td {
+  border: 1px solid #eee;
+  padding: 10px;
+  text-align: left;
+}
+.user-table th {
+  background: #fcb6c9;
+}
+.user-table select {
+  padding: 4px;
+  border-radius: 6px;
+}
+.user-table button {
+  background: #ff7fa1;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: white;
+  cursor: pointer;
+}
+.user-table button:hover {
+  background: #ff5c88;
+}

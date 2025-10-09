@@ -7,15 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  var closeButtons = document.querySelectorAll(".modal .close");
+  var closeButtons = document.querySelectorAll(".faq-modal .faq-close");
   for (var j = 0; j < closeButtons.length; j++) {
     closeButtons[j].addEventListener("click", function () {
-      this.closest(".modal").style.display = "none";
+      this.closest(".faq-modal").style.display = "none";
     });
   }
 
   window.addEventListener("click", function (e) {
-    if (e.target.classList.contains("modal")) {
+    if (e.target.classList.contains("faq-modal")) {
       e.target.style.display = "none";
     }
   });

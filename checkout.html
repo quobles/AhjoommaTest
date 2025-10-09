@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
   <meta charset="UTF-8">
@@ -7,44 +8,45 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="checkout.css">
 </head>
+
 <body>
   <!-- START OF NAVBAR -->
-   <div class="navbar">
-  <div class="left">
-    <a href="bulletin.html">Bulletin</a>
-    <a href="try.html">Try this</a>
-    <a href="about.html">About Us</a>
-  </div>
-<div class="logo">
-  <a href="index.html" class="logo">
-    <img src="images/logoWhite.png" class="logo">
-  </a>
-  </div>
-  <div class="right">
-    <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-      <input type="text" placeholder="Looking for something?" class="search-input">
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
     </div>
-    <button class="icon-btn cart-btn">🛒</button>
-    <button class="icon-btn profile-btn">👤</button>
-    <div class="profile-wrapper">
-      <div class="profile-dropdown" id="profile-dropdown">
-        <p id="user-email" class="hidden">Not logged in</p>
-        <a href="auth.html" id="login-link">Login / Register</a>
-        <button class="hidden" id="logout-btn">Logout</button>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
       </div>
-    </div>
-    <div class="notification-wrapper">
-    <button class="icon-btn notification-btn">🔔</button>
-    <div class="notification-dropdown">
-      <h4>Notifications</h4>
-      <ul>
-      </ul>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email" class="hidden">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn" id="menu-toggle">☰</button>
     </div>
   </div>
-  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
-</div>
-</div>
   <!-- END OF NAVBAR -->
 
   <h2 class="title">Checkout</h2>
@@ -62,12 +64,24 @@
           <option value="pickup">Pickup in store</option>
           <option value="delivery">Delivery</option>
         </select>
+        <div id="pickup-datetime-container">
+          <label>
+            Pickup Date:
+            <input type="date" id="pickup-date">
+          </label>
+
+          <label>
+            Pickup Time:
+            <input type="time" id="pickup-time">
+          </label>
+        </div>
+
       </label>
 
       <label>
         Payment Method:
         <select id="payment-option">
-          <option value="COD">Cash on Delivery</option>
+          <option value="COD">Cash</option>
           <option value="Gcash">GCash</option>
         </select>
       </label>
@@ -85,16 +99,34 @@
         </label>
       </div>
 
-      <p>Delivery Fee: ₱<span id="delivery-fee">0</span></p>
+      <p><strong>Delivery Fee: ₱<span id="delivery-fee">0</span></strong></p>
       <p><strong>Total: ₱<span id="grand-total">0</span></strong></p>
 
       <button id="place-order" class="checkout-btn disabled" disabled>Place Order</button>
     </div>
   </div>
 
+  <!-- Checkout Address Modal -->
+  <div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-overlay"></div>
+    <div class="checkout-modal-box">
+      <div class="checkout-modal-content">
+        <h2>Select Delivery Address</h2>
+        <div class="checkout-address-list">
+          <p>Loading addresses...</p>
+        </div>
+        <div class="checkout-modal-actions">
+          <button id="cancel-checkout">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <script src="script.js" defer></script>
   <script type="module" src="checkout.js" defer></script>
   <script type="module" src="auth.js" defer></script>
-<script type="module" src="notification.js" defer></script>
+  <script type="module" src="notification.js" defer></script>
 </body>
+
 </html>

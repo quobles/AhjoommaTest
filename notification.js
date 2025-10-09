@@ -73,12 +73,17 @@ onAuthStateChanged(auth, async (user) => {
     notifList.innerHTML = "";
     let unreadCount = 0;
     let shownCount = 0;
+    const seenMessages = new Set(); // prevent duplicates
 
     snapshot.forEach((docSnap) => {
       if (shownCount >= 5) return; // show only latest 5
 
       const notif = docSnap.data();
       const notifId = docSnap.id;
+
+      // Skip duplicate messages
+      if (seenMessages.has(notif.message)) return;
+      seenMessages.add(notif.message);
 
       const li = document.createElement("li");
       li.textContent = notif.message;
@@ -97,6 +102,15 @@ onAuthStateChanged(auth, async (user) => {
       notifList.appendChild(li);
       shownCount++;
     });
+
+    // Show "No new notifications" if empty
+    if (notifList.children.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No new notifications";
+      li.style.color = "#777";
+      li.style.fontStyle = "italic";
+      notifList.appendChild(li);
+    }
 
     // Counter badge
     if (unreadCount > 0) {

@@ -3,7 +3,7 @@
 <head>
   <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="accounts.css">
   <meta charset="UTF-8">
   <title>Ahjoomma's K-Mart</title>
 </head>
@@ -48,31 +48,58 @@
 </div>
 <!-- END OF NAVBAR -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management | Ahjoomma’s K-Mart</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="user-management-container">
 
-<!-- ✅ Order Filter -->
-  <section class="orders-section">
-    <h2>Manage Orders</h2>
-    <div class="filter-bar">
-      <label for="order-filter">Filter Orders:</label>
-      <select id="order-filter">
-        <option value="all">All</option>
-        <option value="approved">Approved</option>
-        <option value="pending">Pending</option>
-        <option value="delivering">Delivery</option>
-      </select>
-    </div>
-
-    <div class="search-orders">
-  <input 
-    type="text" 
-    id="order-search" 
-    placeholder="Search by user email or order ID..." 
-  />
+    <!-- Create New User -->
+     <div class="create-container">
+    <div class="create-user-form">
+      <h2>Create New User</h2>
+      <input type="text" id="new-firstname" placeholder="First Name" required>
+<input type="text" id="new-lastname" placeholder="Last Name" required>
+<input type="email" id="new-email" placeholder="Email" required>
+<input type="password" id="new-password" placeholder="Password" required>
+<select id="new-role">
+  <option value="user">User</option>
+  <option value="admin">Admin</option>
+</select>
+<button id="create-user-btn">Create User</button>
 </div>
 
+    </div>
 
-    <div id="orders-container" class="orders-grid"></div>
-  </section>
+    <!-- Existing Users Table -->
+    <h2>Users Management</h2>
+    <input 
+  type="text" 
+  id="user-search" 
+  placeholder="Search user by name or email..." 
+  class="user-search"
+/>
+
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="user-list">
+        <!-- filled by JS -->
+      </tbody>
+    </table>
+  </div>
 
 
   <!-- Bottom row -->
@@ -107,7 +134,7 @@
 
 <script src="script.js" defer></script>
 <script type="module" src="auth.js" defer></script>
-<script type="module" src="admin.js" defer></script>
+<script type="module" src="accounts.js" defer></script>
 <script type="module" src="notification.js" defer></script>
 
 </body>

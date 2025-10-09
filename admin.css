@@ -7,13 +7,25 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 #order-filter {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  flex: 1;
+  min-width: 150px;
 }
+
+input#order-search {
+  width: 90%;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
 
 .orders-grid {
   display: grid;
@@ -25,17 +37,32 @@
   background: #fff;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.order-items {
-  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .order-item {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.order-item div {
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+
+.order-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .order-item img {
@@ -58,4 +85,38 @@
 
 .order-card button:hover {
   background: #229d9b;
+}
+
+@media (max-width: 600px) {
+  .orders-section {
+    padding: 10px;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  #order-filter {
+    width: 100%;
+  }
+
+  .order-card {
+    padding: 12px;
+  }
+
+  .order-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-item img {
+    margin-bottom: 6px;
+    margin-right: 0;
+  }
+
+  .order-card button {
+    width: 100%;
+  }
 }

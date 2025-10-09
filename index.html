@@ -1,272 +1,299 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <link rel="icon" type="image/x-icon" href="images/logoWhite.png">
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <title>Ahjoomma's K-Mart</title>
 </head>
+
 <body>
 
-<!-- START OF NAVBAR -->
-<div class="navbar">
-  <div class="left">
-    <a href="bulletin.html">Bulletin</a>
-    <a href="try.html">Try this</a>
-    <a href="about.html">About Us</a>
-  </div>
-<div class="logo">
-  <a href="index.html" class="logo">
-    <img src="images/logoWhite.png" class="logo">
-  </a>
-  </div>
-  <div class="right">
-    <div class="search-container">
-      <button type="submit" class="search-button">🔍</button>
-      <input type="text" placeholder="Looking for something?" class="search-input">
+  <!-- START OF NAVBAR -->
+  <div class="navbar">
+    <div class="left">
+      <a href="bulletin.html">Bulletin</a>
+      <a href="try.html">Try this</a>
+      <a href="about.html">About Us</a>
     </div>
-    <button class="icon-btn cart-btn">🛒</button>
-    <button class="icon-btn profile-btn">👤</button>
-    <div class="profile-wrapper">
-      <div class="profile-dropdown" id="profile-dropdown">
-        <p id="user-email" class="hidden">Not logged in</p>
-        <a href="auth.html" id="login-link">Login / Register</a>
-        <button class="hidden" id="logout-btn">Logout</button>
+    <div class="logo">
+      <a href="index.html" class="logo">
+        <img src="images/logoWhite.png" class="logo">
+      </a>
+    </div>
+    <div class="right">
+      <div class="search-container">
+        <button type="submit" class="search-button">🔍</button>
+        <input type="text" placeholder="Looking for something?" class="search-input">
       </div>
-    </div>
-    <div class="notification-wrapper">
-    <button class="icon-btn notification-btn">🔔</button>
-    <div class="notification-dropdown">
-      <h4>Notifications</h4>
-      <ul>
-      </ul>
+      <button class="icon-btn cart-btn">🛒</button>
+      <button class="icon-btn profile-btn">👤</button>
+      <div class="profile-wrapper">
+        <div class="profile-dropdown" id="profile-dropdown">
+          <p id="user-email" class="hidden">Not logged in</p>
+          <a href="auth.html" id="login-link">Login / Register</a>
+          <button class="hidden" id="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="notification-wrapper">
+        <button class="icon-btn notification-btn">🔔</button>
+        <div class="notification-dropdown">
+          <h4>Notifications</h4>
+          <ul>
+          </ul>
+        </div>
+      </div>
+      <button class="icon-btn more-btn" id="menu-toggle">☰</button>
     </div>
   </div>
-  <button class="icon-btn more-btn" id="menu-toggle">☰</button>
-</div>
-</div>
-<!-- END OF NAVBAR -->
+  <!-- END OF NAVBAR -->
 
-<!-- START OF MAIN CAROUSEL -->
-<div class="carousel main-carousel">
-  <button class="carousel-btn prev">‹</button>
+  <!-- START OF MAIN CAROUSEL -->
+  <div class="carousel main-carousel">
+    <button class="carousel-btn prev">‹</button>
 
-  <div class="carousel-track">
-    <img src="images/banner1.png">
-    <img src="images/banner2.png">
-    <img src="images/banner3.png">
-  </div>
-
-  <button class="carousel-btn next">›</button>
-
-  <div class="carousel-dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</div>
-<!-- END OF MAIN CAROUSEL -->
-
-<!-- START OF ITEM CATEGORIES -->
-<div class="categories">
-  <a href="catalog.html?category=Noodles" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/noodles.png?alt=media&token=22efa28d-788b-4df8-ab78-a648a7ee7f0a"><p>Noodles</p></a>
-  <a href="catalog.html?category=Canned" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/canned.jpg?alt=media&token=6c75e854-0bcb-4432-acd7-e796f877cd92"><p>Canned</p></a>
-  <a href="catalog.html?category=Beverages" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/beverages.jpg?alt=media&token=2e1afc31-64ef-4c4c-8ad2-87b20a5692d7"><p>Beverages</p></a>
-  <a href="catalog.html?category=Snacks" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/snacks.png?alt=media&token=24103089-99d1-4989-9c63-cff98bbbe7e5"><p>Snacks</p></a>
-  <a href="catalog.html?category=Nori" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/Nori%2FNamkwang-singles-23%20-%20Copy.png?alt=media&token=9084b19b-6dc5-47c9-b2b4-550c31563d3a"><p>Nori</p></a>
-  <a href="catalog.html?category=IceCream" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/icecream.jpg?alt=media&token=54152fcb-6ebb-4c19-8670-4904387e348f"><p>Ice Cream</p></a>
-  <a href="catalog.html?category=Equipments" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/equipments.jpg?alt=media&token=ac6eb67c-46f4-4881-8739-436f818af1e2"><p>Equipments</p></a>
-  <a href="catalog.html?category=Frozen" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/frozen.jpg?alt=media&token=a3eeb0fd-ece4-4975-868e-3394cc008370"><p>Frozen</p></a>
-  <a href="catalog.html?category=HomeEssentials" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/home.jpg?alt=media&token=7976a571-7cde-4182-9cc1-5b19b2512156"><p>Home Essentials</p></a>
-  <a href="catalog.html?category=Others" class="category"><img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/others.png?alt=media&token=57009ecc-9719-4595-86c0-f6339c78040c"><p>Others</p></a>
-</div>
-<!-- END OF ITEM CATEGORIES -->
-
-<!-- START OF FEATURED + PRODUCT SLIDESHOW -->
-<div class="featured-section">
-
-  <!-- Featured Carousel -->
-  <div class="carousel featured-carousel">
-    <h2 class="carousel-title">AHJOOMMAS CHOICE</h2>
-    <div class="carousel-track-container">
-      <ul class="carousel-track">
-        <li class="carousel-slide">
-          <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-Bibigo-Nori-Sheets.png?alt=media&token=c2f02599-aaa3-4d53-b8c0-408c919be3c4">
-          <p class="desc">Description of the featured photo here</p>
-        </li>
-        <li class="carousel-slide">
-          <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-Mom_s-Kimchi.png?alt=media&token=0c43c0ee-1309-445f-94fe-096f7bdfa565">
-          <p class="desc">Another featured photo description</p>
-        </li>
-        <li class="carousel-slide">
-          <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-choice-enoki-mushroom.png?alt=media&token=fbd6f487-982c-4b3a-90bf-821d75216c7e">
-          <p class="desc">Clickable featured image</p>
-        </li>
-      </ul>
+    <div class="carousel-track">
+      <img src="images/banner1.png">
+      <img src="images/banner2.png">
+      <img src="images/banner3.png">
     </div>
-    <div class="carousel-nav">
-      <button class="carousel-btn prev">‹</button>
-      <button class="carousel-btn next">›</button>
-    </div>
+
+    <button class="carousel-btn next">›</button>
+
     <div class="carousel-dots">
       <span class="dot active"></span>
       <span class="dot"></span>
       <span class="dot"></span>
     </div>
   </div>
+  <!-- END OF MAIN CAROUSEL -->
 
-  <!-- Product Slideshow -->
-  <div class="product-slideshow">
-    <h2 class="carousel-title">BEST SELLER OF THE MONTH</h2>
-    <div class="product-cards">
-      <div class="product-card active">
-        <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/bestSeller%2Fbest-seller-CB-Vanilla-Americano.png?alt=media&token=a7cee21e-215d-4ce3-8d61-ee01fdbe100f">
-        <h3>Caffe Benne Vanilla Flavor Americano</h3>
-        <p>₱85</p>
-        <p>120 Sales</p>
-        <a>Add to Cart</a>
-      </div>
-      <div class="product-card">
-        <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/bestSeller%2Fbest-seller-samyang-buldak-carbonara.png?alt=media&token=717217ea-f34a-4f75-826a-be6509331d92">
-        <h3>Samyang Buldak Carbonara</h3>
-        <p>₱90</p>
-        <p>90 Sales</p>
-        <a>Add to Cart</a>
-      </div>
-      <div class="product-card">
-        <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/bestSeller%2Fbest-seller-yopokki-cheese-topokki.png?alt=media&token=86309e92-5fa5-4505-af7a-33c38d142208">
-        <h3>Yopokki Cheese Topokki</h3>
-        <p>₱80</p>
-        <p>75 Sales</p>
-        <a>Add to Cart</a>
-      </div>
-    </div>
-    <div class="carousel-dots product-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
+  <!-- START OF ITEM CATEGORIES -->
+   <div class="catalog">
+  <h2 class="catalog-title">Catalog</h2>
+  <div class="categories">
+    <a href="catalog.html?category=Noodles" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/noodles.png?alt=media&token=22efa28d-788b-4df8-ab78-a648a7ee7f0a">
+      <p>Noodles</p>
+    </a>
+    <a href="catalog.html?category=Canned" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/canned.jpg?alt=media&token=6c75e854-0bcb-4432-acd7-e796f877cd92">
+      <p>Canned</p>
+    </a>
+    <a href="catalog.html?category=Beverages" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/beverages.jpg?alt=media&token=2e1afc31-64ef-4c4c-8ad2-87b20a5692d7">
+      <p>Beverages</p>
+    </a>
+    <a href="catalog.html?category=Snacks" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/snacks.png?alt=media&token=24103089-99d1-4989-9c63-cff98bbbe7e5">
+      <p>Snacks</p>
+    </a>
+    <a href="catalog.html?category=Nori" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/Nori%2FNamkwang-singles-23%20-%20Copy.png?alt=media&token=9084b19b-6dc5-47c9-b2b4-550c31563d3a">
+      <p>Nori</p>
+    </a>
+    <a href="catalog.html?category=IceCream" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/icecream.jpg?alt=media&token=54152fcb-6ebb-4c19-8670-4904387e348f">
+      <p>Ice Cream</p>
+    </a>
+    <a href="catalog.html?category=Equipments" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/equipments.jpg?alt=media&token=ac6eb67c-46f4-4881-8739-436f818af1e2">
+      <p>Equipments</p>
+    </a>
+    <a href="catalog.html?category=Frozen" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/frozen.jpg?alt=media&token=a3eeb0fd-ece4-4975-868e-3394cc008370">
+      <p>Frozen</p>
+    </a>
+    <a href="catalog.html?category=HomeEssentials" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/home.jpg?alt=media&token=7976a571-7cde-4182-9cc1-5b19b2512156">
+      <p>Home Essentials</p>
+    </a>
+    <a href="catalog.html?category=Others" class="category"><img
+        src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/others.png?alt=media&token=57009ecc-9719-4595-86c0-f6339c78040c">
+      <p>Others</p>
+    </a>
   </div>
+  </div>
+  <!-- END OF ITEM CATEGORIES -->
 
+  <!-- START OF FEATURED + PRODUCT SLIDESHOW -->
+  <div class="featured-section">
+
+    <!-- Featured Carousel -->
+    <div class="carousel featured-carousel">
+      <h2 class="carousel-title">AHJOOMMAS CHOICE</h2>
+      <div class="carousel-track-container">
+        <ul class="carousel-track">
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-Bibigo-Nori-Sheets.png?alt=media&token=c2f02599-aaa3-4d53-b8c0-408c919be3c4">
+            <p class="desc">Crisp Texture: It is roasted to achieve a satisfyingly crisp and slightly airy texture,
+              which holds up well when filled. Subtle Flavor: It has a delicate, subtle oceanic or umami flavor that
+              complements various fillings without overpowering them.
+              Easy to Use: The sheets are typically sized and prepared to be easy to handle and roll.
+            </p>
+          </li>
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-beef-enoki-roll.png?alt=media&token=edeae4de-7595-4ff4-85af-3f37673b5d56">
+            <p class="desc">The dish is a harmonious blend of tender, savory meat and a pleasant, chewy vegetable
+              texture, making for a highly satisfying bite.</p>
+          </li>
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-hansung-luncheon-meat.png?alt=media&token=05e57510-e1b4-49b5-bf4c-051f053f4677">
+            <p class="desc">It features a full, tender, and meaty texture with a bright, pinkish-brown color and a
+              distinct, savory aroma. The precooked meat can be enjoyed immediately or easily prepared by pan-frying,
+              making it a versatile staple for rice, noodles, sandwiches.</p>
+          </li>
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-choice-enoki-mushroom.png?alt=media&token=fbd6f487-982c-4b3a-90bf-821d75216c7e">
+            <p class="desc">These "golden needle" mushrooms are prized in East Asian cuisine for their mild, slightly
+              sweet flavor and pleasant, crisp-chewy texture. They are incredibly versatile, commonly used in hot pots,
+              soups, stir-fries, and as a raw garnish in salads.</p>
+          </li>
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-choice-LKK-Satay-Sauce.png?alt=media&token=a914157e-93e6-455f-b71e-4326b8fdb690">
+            <p class="desc">These are concentrated, ready-made flavorings designed to instantly create rich, authentic
+              Asian broths, offering a wide selection of popular tastes like Pork Bone, Satay, or Seafood. Dissolved in
+              boiling water, these convenient sauces are perfect for quickly preparing a delicious hot pot, noodle soup,
+              or stew at home.</p>
+          </li>
+          <li class="carousel-slide">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/ahjoomaChoice%2Fahjoommas-Dried-Egg-Noodles.png?alt=media&token=00e6541f-3efe-44e1-8915-5b70208301dc">
+            <p class="desc">These noodles are a versatile type of pasta made from wheat flour and eggs, commonly sold in
+              dried nests or ribbons in various thicknesses. When cooked, they develop a soft, rich, and slightly chewy
+              texture that absorbs flavors effectively from sauces or broths. They are a staple in both Western cuisines
+              for casseroles and Eastern Asian dishes like stir fries and noodle soups.</p>
+          </li>
+          <li class="carousel-slide">
+            <img src="">
+            <p class="desc">Wei Wei Shabu Shabu Balls are often chosen over other brands or generic varieties for
+              several reasons, primarily centered on quality, variety, and reliability</p>
+          </li>
+        </ul>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn prev">‹</button>
+        <button class="carousel-btn next">›</button>
+      </div>
+      <div class="carousel-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+
+    <!-- Product Slideshow -->
+    <div class="product-slideshow">
+  <h2 class="carousel-title">BEST SELLER OF THE MONTH</h2>
+  <div class="bs-cards"></div>
+  <div class="bs-dots bs-dots"></div>
 </div>
-<!-- END OF FEATURED + PRODUCT SLIDESHOW -->
 
-<section class="promotion">
-  <h2 class="section-title">NEW ARRIVALS</h2>
-  <div class="promo-grid">
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FchinguCafe%2FChingu-Hazelnut-Americano-80.png?alt=media&token=4ab5f5e4-71ec-4891-bd46-3ec9ce32dc60" alt="Product">
-      <h3>Chingu Cafe Hazelnut Americano</h3>
-      <p class="price">₱80.00</p>
-      <button class="quick-view">QUICK VIEW</button>
+  </div>
+  <!-- END OF FEATURED + PRODUCT SLIDESHOW -->
+
+  <section class="promotion">
+    <h2 class="section-title">NEW ARRIVALS</h2>
+    <div class="promo-grid" id="new-arrivals">
+
     </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2Fdrinks%2FBaskin-Robbins-Cotton-Candy-Wonderland-68.png?alt=media&token=9d21be33-272d-44e1-85ba-81150726aac8" alt="Product">
-      <h3>Baskin Robbins Sparkling Soda</h3>
-      <p class="price">₱68.00</p>
-      <button class="quick-view">QUICK VIEW</button>
     </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2Fdrinks%2F170-Days-Apple-Juice-1.5L-183.png?alt=media&token=0d32957e-df00-4bfc-9f11-77e0ae2b6ad5" alt="Product">
-      <h3>170 Days Apple Juice</h3>
-      <p class="price">₱183.00</p>
-      <button class="quick-view">QUICK VIEW</button>
-    </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FchinguCafe%2FChingu-Vanilla-Latte-80.png?alt=media&token=225c64ff-2d7c-4a76-a851-a800ce790093" alt="Product">
-      <h3>Chingu Vanilla Latte</h3>
-      <p class="price">₱80.00</p>
-      <button class="quick-view">QUICK VIEW</button>
-    </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FiceCream%2FCledor-Parfait-Cherry-Blossom-136.png?alt=media&token=1b91b0f3-6bad-414e-b7fa-82da97542732" alt="Product">
-      <h3>Cledor Parfait Cherry Blossom</h3>
-      <p class="price">₱136.00</p>
-      <button class="quick-view">QUICK VIEW</button>
-    </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FiceCream%2FCledor-Parfait-Choco-136.png?alt=media&token=c8cd1943-25d0-46e6-9aaf-b07d1f042844" alt="Product">
-      <h3>Cledor Parfait Choco</h3>
-      <p class="price">₱136.00</p>
-      <button class="quick-view">QUICK VIEW</button>
-    </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FchinguCafe%2FChingu-Caramel-Latte-80.png?alt=media&token=d95af811-ca20-4a83-8ad8-9dd18a6bf58d" alt="Product">
-      <h3>Chingu Caramel Latte</h3>
-      <p class="price">₱80.00</p>
-      <button class="quick-view">QUICK VIEW</button>
-    </div>
-    <div class="promo-card">
-      <img src="https://firebasestorage.googleapis.com/v0/b/ahjoommakmart.firebasestorage.app/o/newItems%2FchinguCafe%2FChingu-SB-Lemonade-65.png?alt=media&token=c65e3c33-368b-4deb-8556-bbf81420b602" alt="Product">
-      <h3>Chingu Strawberry Lemonade</h3>
-      <p class="price">₱65.00</p>
-      <button class="quick-view">QUICK VIEW</button>
+  </section>
+
+  <div id="quickViewModal" class="modal">
+    <div class="modal-content promo-card">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <div class="modal-image">
+          <img src="" alt="Product Image">
+        </div>
+        <div class="modal-details">
+          <h3 class="modal-title"></h3>
+          <p class="modal-description"></p>
+          <h4>Nutritional Facts</h4>
+          <p class="nutrition"></p>
+          <p class="modal-price"></p>
+          <button id="addToCartBtn">Add to Cart</button>
+        </div>
+      </div>
     </div>
   </div>
-</section>
+  <!-- FOOTER START -->
+  <footer>
+    <!-- Top row -->
+    <div class="footer-top">
+      <div class="footer-card">
+        <h3>Delivery Area</h3>
+        <p>Camella, Salinas<br>
+          Bacoor Cavite<br>
+          Imus Cavite</p>
+        <small>NOTE: Places not mentioned above will use third-party delivery (e.g. Lalamove, Grab, Food Panda,
+          etc.)</small>
+      </div>
 
-<!-- FOOTER START -->
-<footer>
-  <!-- Top row -->
-  <div class="footer-top">
-    <div class="footer-card">
-      <h3>Delivery Area</h3>
-      <p>Camella, Salinas<br>
-         Bacoor Cavite<br>
-         Imus Cavite</p>
-      <small>NOTE: Places not mentioned above will use third-party delivery (e.g. Lalamove, Grab, Food Panda, etc.)</small>
+      <div class="footer-card">
+        <h3>Operating Hours</h3>
+        <p>10:00AM – 9:00PM<br>
+          Monday – Sunday</p>
+        <p>10:00AM – 9:00PM<br>
+          Holidays</p>
+      </div>
+
+      <div class="footer-card">
+        <h3>Payment Options</h3>
+        <p>COD (Cash on Delivery)</p>
+        <p>GCASH</p>
+      </div>
     </div>
 
-    <div class="footer-card">
-      <h3>Operating Hours</h3>
-      <p>10:00AM – 9:00PM<br>
-         Monday – Sunday</p>
-      <p>10:00AM – 9:00PM<br>
-         Holidays</p>
-    </div>
+    <!-- Bottom row -->
+    <div class="footer-bottom">
+      <div class="footer-section address">
+        <h3>Address</h3>
+        <p><strong>#18 Hawaii Street, Camella Homes<br>
+            Salinas IV. Bacoor City, Cavite.</strong></p>
+        <a href="about.html#map">View maps here.</a>
+        <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+      </div>
 
-    <div class="footer-card">
-      <h3>Payment Options</h3>
-      <p>COD (Cash on Delivery)</p>
-      <p>GCASH</p>
-    </div>
-  </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><strong>CEL NO:</strong> +639260934822</p>
+        <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
+        <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
+      </div>
 
-  <!-- Bottom row -->
-  <div class="footer-bottom">
-    <div class="footer-section address">
-      <h3>Address</h3>
-      <p><strong>#18 Hawaii Street, Camella Homes<br>
-         Salinas IV. Bacoor City, Cavite.</strong></p>
-      <a href="#">View maps here.</a>
-      <p><strong>ahjoommaskmart (online korean mart)</strong></p>
+      <div class="footer-section">
+        <h3>BECOME PART OF US</h3>
+        <form>
+          <input type="email" placeholder="Email*" required>
+          <input type="text" placeholder="Contact No.">
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
     </div>
+  </footer>
+  <!-- FOOTER END -->
 
-    <div class="footer-section">
-      <h3>Contact Us</h3>
-      <p><strong>CEL NO:</strong> +639260934822</p>
-      <p><strong>FB:</strong> Ahjoomma’s K-Mart</p>
-      <p><strong>EMAIL:</strong> ahjoommas.kmart@gmail.com</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>BECOME PART OF US</h3>
-      <form>
-        <input type="email" placeholder="Email*" required>
-        <input type="text" placeholder="Contact No.">
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Register</button>
-      </form>
-    </div>
-  </div>
-</footer>
-<!-- FOOTER END -->
-
-<script src="script.js" defer></script>
-<script src="index.js" defer></script>
-<script type="module" src="auth.js" defer></script>
-<script type="module" src="notification.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="index.js" defer></script>
+  <script type="module" src="newarrivals.js" defer></script>
+  <script type="module" src="bestSeller.js" defer></script>
+  <script type="module" src="auth.js" defer></script>
+  <script type="module" src="notification.js" defer></script>
 
 
 </body>
+
 </html>
